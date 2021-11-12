@@ -1,0 +1,10 @@
+.chat-card-list :hover{
+    cursor: pointer;
+    
+}
+
+.container-chat{
+    background-image: url("../../../assets/images/img/bgChat.jpg");
+    background-position: center;
+    background-size: cover;
+}
