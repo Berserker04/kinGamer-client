@@ -23,7 +23,7 @@ export default function HomeClientContainer() {
 
   return (
     <div>
-      {/* <HomeClientView /> */}
+      <HomeClientView />
     </div>
   );
 }

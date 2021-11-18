@@ -8,16 +8,25 @@ import RegisterContainer from "../auth/RegisterContainer";
 import NoFound from "../shared/noFound";
 import LayoutAdmin from "../../components/layout/admin/Layout";
 import LayoutClient from "../../components/layout/client/Layout";
-import ProfileContainer from "../admin/profile/ProfileContainer";
-import HomeContainer from "../admin/home/HomeContainer";
 import { useSelector } from "react-redux";
-import HomeClientContainer from "../client/home/HomeClientContainer";
+
+// Admin
+import HomeContainer from "../admin/home/HomeContainer";
+import ProfileContainer from "../admin/profile/ProfileContainer";
 import ChatContainer from "../admin/chat/ChatContainer";
-import NewsContainer from "../client/news/NewsContainer";
 import ProductContainer from "../admin/product/ProductContainer";
 import ProductDetail from "../admin/product/components/ProductDetail";
 import NewsContainerAdmin from "../admin/news/NewsContainer";
 import NewsDetail from "../admin/news/components/NewsDetail";
+
+// Client
+import HomeClientContainer from "../client/home/HomeClientContainer";
+import NewsClienntContainer from "../client/news/NewsClientContainer";
+import ProductClienntContainer from "../client/product/productClientContainer";
+
+// Dashboar
+
+
 
 const App = () => {
   //   const { token } = useSelector((state) => state.auth);
@@ -52,7 +61,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LayoutClient />}>
             <Route index element={<HomeClientContainer />} />
-            <Route path="/noticias" element={<NewsContainer />} />
+            <Route path="/noticias" element={<NewsClienntContainer />} />
+            <Route path="/productos" element={<ProductClienntContainer />} />
             <Route path="/perfil" element={<ProfileContainer />} />
           </Route>
           <Route path="" element={<NoFound />} />

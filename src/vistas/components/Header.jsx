@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../assets/images/KingGamerLogo.png';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import "./css/header.css"
 export const Header = () => {
     return (
       <>

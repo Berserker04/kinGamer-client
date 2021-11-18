@@ -1,7 +1,16 @@
-import React from "react";
-// import { URL_IMAGE } from "../../../api";
-// import DataTableHomeView from "../../../components/datatable/DataTableHomeView";
+import React from 'react'
+import { URL_IMAGE } from '../../../api'
+import NewsClientContainer from '../news/NewsClientContainer'
+import productClientContainer from '../product/productClientContainer'
+import { Team } from './components/Team'
+// import DataTableHomeView from '../../../components/datatable/DataTableHomeView'
 
-// export default function HomeClientView({}) {
-//   return <h1>Home cliente</h1>;
-// }
+export default function HomeClientView({}) {
+  return (
+    <>
+      <productClientContainer />
+      <NewsClientContainer />
+      <Team />
+    </>
+  )
+}
