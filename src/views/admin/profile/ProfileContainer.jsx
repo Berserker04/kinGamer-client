@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { API } from "../../../api";
 import { listProfessions } from "../../../redux/actions/profession";
 import { listSpecialties } from "../../../redux/actions/specialty";
 import { getUser, updateUser } from "../../../redux/actions/users";
@@ -12,26 +14,58 @@ export default function ProfileContainer() {
   const { specialties } = useSelector((state) => state.specialty);
   const { professions } = useSelector((state) => state.profession);
   const [updateFinish, setUpdateFinish] = useState(false);
+  const [loading, setLoading] = useState(false)
 
-  const [form, setForm] = useState({
-    id: "",
-    firstName: "",
-    lastName: "",
-    document: "",
-    cellPhone: "",
-    image: "",
-    profession_id: "",
-    specialty_id: "",
-    password: "",
-    role_id: "",
-    state: "",
-  });
+  const [form, setForm] = useState(user);
 
   const getData = useCallback(async () => {
     dispatch(listSpecialties(header));
     dispatch(listProfessions(header));
     setForm(user);
   }, [dispatch, setForm, getUser]);
+
+  console.log(user);
+
+  const onChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const handleUpdate = async () => {
+    setLoading(true)
+
+    let { first_name, last_name, ...user } = form
+
+    let data = {
+      first_name,
+      last_name,
+      user,
+    }
+
+    await API.POST('/user', data).then(({ data }) => {
+      if (data.ok) {
+        API.POST('/login', user).then(({ data: result }) => {
+          if (result.ok) {
+            localStorage.setItem('token', result.body.token)
+            window.location.href = '/'
+          } else {
+            window.location.href = '/login'
+          }
+        })
+      } else {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    })
+    setLoading(false)
+  }
 
   useEffect(() => {
     getData();
@@ -69,6 +103,8 @@ export default function ProfileContainer() {
         user={user}
         specialties={specialties}
         professions={professions}
+        onChange={onChange}
+        handleUpdate={handleUpdate}
       />
     </div>
   );

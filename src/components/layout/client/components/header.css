@@ -16,7 +16,7 @@ body{
     font-family: 'Montserrat', sans-serif;
     font-weight:bold;
     position: relative;
-    height:100vh;
+    height:550px;
 }
 .nav__menu{
     display:flex;

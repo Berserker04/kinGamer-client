@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import { Outlet } from 'react-router-dom'
+import Footer from './components/Footer'
 // import Employees from './pages/Employees';
 
 const Layout = ({ children }) => {
@@ -37,22 +38,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
         </div>
-        <footer class="footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> ©
-                KinGamer.
-              </div>
-              <div class="col-sm-6">
-                <div class="text-sm-end d-none d-sm-block">
-                  Desarrollado <i class="mdi mdi-heart text-danger"></i> por
-                  Equipo KinGamer - grupp 3
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   )

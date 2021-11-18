@@ -31,7 +31,7 @@ export default function ProductDetail() {
           />
         </figure>
       </div>
-      <div className="col-md-6">
+      <div className="col-md-6" style={{backgroundColor:"#00000099"}}>
         {/* <div className="col-12"> */}
         <h2>{product.name}</h2>
         {/* </div> */}

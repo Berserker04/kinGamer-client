@@ -23,17 +23,22 @@ export const Header = () => {
           <ul className="nav__menu">
             <li>
               <NavLink activeclassname="active" end to="/">
-                <i className="fas fa-home"></i>Inicio
+                <i className="fas fa-home"></i> Inicio
               </NavLink>
             </li>
             <li>
-              <NavLink to="products">
-                <i className="fas fa-box-open"></i>Productos
+              <NavLink to="/productos">
+                <i className="fas fa-box-open"></i> Productos
               </NavLink>
             </li>
             <li>
-              <NavLink to="/news">
-                <i className="fas fa-newspaper"></i>Noticias
+              <NavLink to="/noticias">
+                <i className="fas fa-newspaper"></i> Noticias
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">
+              <i class="fas fa-sign-in-alt"></i> Login
               </NavLink>
             </li>
           </ul>

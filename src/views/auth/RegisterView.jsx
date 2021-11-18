@@ -1,73 +1,98 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import logo from '../../assets/images/logos/logo.png'
 
 // import logo from "../../assets/images/logo.png";
-import "./styles/styles.css";
+import './styles/styles.css'
 
-const RegisterView = ({ onChange, register }) => (
+const RegisterView = ({ onChange, register, form }) => (
   <div class="account-pages my-5 pt-5">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-xl-4 col-lg-6 col-md-8">
           <div class="card">
             <div class="card-body p-4">
-              <div class="text-center">
-                <a href="index.html" class="">
-                  <img
-                    src="assets/images/logo-dark.png"
-                    alt=""
-                    height="24"
-                    class="auth-logo logo-dark mx-auto"
-                  />
-                  <img
-                    src="assets/images/logo-light.png"
-                    alt=""
-                    height="24"
-                    class="auth-logo logo-light mx-auto"
-                  />
-                </a>
+              <div className="text-center">
+                <Link replace to="/">
+                  <img src={logo} alt="" height="100" />
+                </Link>
               </div>
-
-              <h4 class="font-size-18 text-muted text-center mt-2">
-                Free Register
+              <h4 className="font-size-18 text-muted mt-2 text-center">
+                Registrae ahora!
               </h4>
-              <p class="text-muted text-center mb-4">
-                Get your free Upzet account now.
+              <p className="mb-5 text-center">
+                Y podras conocer más personas gamer.
               </p>
               <form class="form-horizontal" action="index.html">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="mb-4">
                       <label class="form-label" for="username">
-                        Username
+                        Nombre *
                       </label>
                       <input
                         type="text"
                         class="form-control"
                         id="username"
-                        placeholder="Enter username"
+                        placeholder="Nombre"
+                        name="first_name"
+                        onChange={onChange}
+                        required
                       />
                     </div>
                     <div class="mb-4">
                       <label class="form-label" for="useremail">
-                        Email
+                        Apellido
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="useremail"
+                        placeholder="Apellido"
+                        name="last_name"
+                        onChange={onChange}
+                      />
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label" for="user_name">
+                        Usuario *
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="useremail"
+                        placeholder="Usuario"
+                        name="user_name"
+                        onChange={onChange}
+                        required
+                      />
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label" for="useremail">
+                        Correo *
                       </label>
                       <input
                         type="email"
                         class="form-control"
                         id="useremail"
-                        placeholder="Enter email"
+                        placeholder="Correo electronico"
+                        name="email"
+                        onChange={onChange}
+                        required
                       />
                     </div>
                     <div class="mb-4">
                       <label class="form-label" for="userpassword">
-                        Password
+                        Contraseña *
                       </label>
                       <input
                         type="password"
                         class="form-control"
                         id="userpassword"
-                        placeholder="Enter password"
+                        placeholder="Contraseña"
+                        name="password"
+                        onChange={onChange}
+                        required
                       />
                     </div>
                     <div class="form-check">
@@ -75,23 +100,30 @@ const RegisterView = ({ onChange, register }) => (
                         type="checkbox"
                         class="form-check-input"
                         id="term-conditionCheck"
+                        name="acceptTerms"
+                        onChange={(e) => {
+                          e.target.value = e.target.checked
+                          onChange(e)
+                        }}
                       />
                       <label
                         class="form-check-label fw-normal"
                         for="term-conditionCheck"
                       >
-                        I accept{" "}
+                        Yo acepto *{' '}
                         <a href="#" class="text-primary">
-                          Terms and Conditions
+                          Los Terminos y Condiciones
                         </a>
                       </label>
                     </div>
                     <div class="d-grid mt-4">
                       <button
                         class="btn btn-primary waves-effect waves-light"
-                        type="submit"
+                        type="button"
+                        onClick={() => register()}
+                        disabled={form.acceptTerms !== 'true' ? true : false}
                       >
-                        Register
+                        Registrar
                       </button>
                     </div>
                   </div>
@@ -103,9 +135,9 @@ const RegisterView = ({ onChange, register }) => (
             <p class="text-white-50">
               Already have account ?
               <a href="auth-login.html" class="fw-medium text-primary">
-                {" "}
-                Login{" "}
-              </a>{" "}
+                {' '}
+                Login{' '}
+              </a>{' '}
             </p>
             <p class="text-white-50">
               © <script>document.write(new Date().getFullYear())</script> Upzet.
@@ -117,6 +149,6 @@ const RegisterView = ({ onChange, register }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default RegisterView;
+export default RegisterView

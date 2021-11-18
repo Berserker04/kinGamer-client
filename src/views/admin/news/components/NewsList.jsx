@@ -28,7 +28,7 @@ export default function NewsList() {
 
   return (
     <>
-      <div>
+      <div className="col-6">
         <input
           className="form-control"
           style={{ marginBottom: 10 }}

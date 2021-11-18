@@ -4,10 +4,15 @@ import cpu from '../../../assets/images/img/CPUGPU.jpg'
 import juice from '../../../assets/images/img/Juice_Noche.png'
 import punk from '../../../assets/images/img/cyberpunk.jpg'
 import './styles.css'
+import NewsList from '../../admin/news/components/NewsList'
 export default function NewsClientView() {
   return (
     <>
-      <h2 className="title-section2">Las Últimas Noticias</h2>
+      <h2 className="title-section2">Noticias</h2>
+      <div className="row">
+        <NewsList />
+      </div>
+      {/* <h2 className="title-section2">Las Últimas Noticias</h2>
       <section className="row section" style={{ padding: '50px' }}>
         <div
           className="card-news col-sm-12 col-md-6"
@@ -42,86 +47,7 @@ export default function NewsClientView() {
             </a>
           </div>
         </div>
-        <div
-          className="card-news col-sm-12 col-md-6"
-          style={{ marginBottom: '30px' }}
-        >
-          <h3 className="noticia2">Noticia 2</h3>
-          <div className="noticia">
-            <img className="img-2" src={cpu} width="50%" height="50%" alt="" />
-            <p className="paragraph2" id="info-cpugpu">
-              Para muchos Gamers y amantes del desarrollo ha sido siempre muy
-              importante tener en cuenta qué procesador, y qué tarjeta gráfica
-              usar para sacar el mayor rendimiento de su máquina, y es que no es
-              para menos puesto que dependiendo de esta combinación, se puede
-              crear un flujo de trabajo excelente para la máquina o morir en el
-              cuello de botella...
-            </p>
-            <a
-              className="info"
-              href="https://noticiast.com/4-mejores-combinaciones-de-cpu-gpu-para-juegos-y-estaciones-de-trabajo/"
-            >
-              <i className="arrow fas fa-arrow-right"></i>Mira las mejores
-              combinaciones aquí
-            </a>
-          </div>
-        </div>
-        <div
-          className="card-news col-sm-12 col-md-6"
-          style={{ marginBottom: '30px' }}
-        >
-          <h3 className="noticia3">Noticia 3</h3>
-          <div className="noticia">
-            <img
-              className="img-3"
-              src={juice}
-              width="50%"
-              height="50%"
-              alt=""
-            />
-            <p className="paragraph3" id="info-studio">
-              Muchos de los creadores y desarrolladores independientes
-              Colombianos, literalmente trabajan desde cero y con toda el alma
-              para materializar sus creaciones, y así poder abarcar un amplio
-              público objetivo en el cual buscan satisfacer la sed de diversión
-              y retar sus habilidades, este es el caso de Enigmatic 3D, un
-              Studio indie situado en Barrancabermeja que cuenta con talento a
-              nivel nacional
-            </p>
-
-            <a className="info" href="https://www.facebook.com/Enigmatic3D/">
-              <i className=" arrow fas fa-arrow-right"></i>Mira el perfil en
-              Facebook de Enigmatic 3D
-            </a>
-          </div>
-        </div>
-        <div
-          className="card-news col-sm-12 col-md-6"
-          style={{ marginBottom: '30px' }}
-        >
-          <h3 className="noticia4">Noticia 4</h3>
-          <div className="noticia">
-            <img className="img-4" src={punk} width="50%" height="50%" alt="" />
-            <p className="paragraph4" id="info-cyberpunk">
-              Muchos de los gamers que se encontraban esperando este anhelo, se
-              quedaron con las manos en la cara y asombrados al ver que
-              PlayStation que había invertido bastantes millones de dolares en
-              este proyecto, lo sacaron de circulación después de haber luchado
-              contra el tiempo de cara a un lanzamiento que no fructificó como
-              se tenía planeado, y es que parece ser que la ambición por sacar
-              un producto para las fechas navideñas fue su gran error.
-            </p>
-
-            <a
-              className="info"
-              href="https://www.eltiempo.com/tecnosfera/videojuegos/cyberpunk-2077-la-historia-del-fracaso-del-videojuego-563812"
-            >
-              <i className=" arrow fas fa-arrow-right"></i>Amplia esta historia
-              aquí
-            </a>
-          </div>
-        </div>
-      </section>
+      </section> */}
     </>
   )
 }

@@ -34,13 +34,13 @@ export const Team = () => {
                     Estudiante de sistemas de infomación y desarrollo de
                     software.
                   </p>
-                  <button
+                  {/* <button
                     className="btn btn-info"
                     data-bs-toggle="modal"
                     data-bs-target="#desarrollador1"
                   >
                     Ver más
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -65,13 +65,13 @@ export const Team = () => {
                     Soy estudiante de la Misión TIC, de la Universidad Digital
                     de Antioquia y ex estudiante de la Universidad de Antioquia.
                   </p>
-                  <button
+                  {/* <button
                     className="btn btn-info"
                     data-bs-toggle="modal"
                     data-bs-target="#desarrollador2"
                   >
                     Ver más
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -96,13 +96,13 @@ export const Team = () => {
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <button
+                  {/* <button
                     className="btn btn-info"
                     data-bs-toggle="modal"
                     data-bs-target="#desarrollador3"
                   >
                     Ver más
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -127,13 +127,13 @@ export const Team = () => {
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <button
+                  {/* <button
                     className="btn btn-info"
                     data-bs-toggle="modal"
                     data-bs-target="#desarrollador4"
                   >
                     Ver más
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -155,13 +155,13 @@ export const Team = () => {
                 <div className="card-body">
                   <h5 className="card-title">Emerson Reyes</h5>
                   <p className="card-text">Estudiante de Ingeniería Electrónica.</p>
-                  <button
+                  {/* <button
                     className="btn btn-info"
                     data-bs-toggle="modal"
                     data-bs-target="#desarrollador5"
                   >
                     Ver más
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

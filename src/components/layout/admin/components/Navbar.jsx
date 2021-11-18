@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../../../../assets/images/logos/logo.png'
 
 const Navbar = () => {
@@ -257,10 +257,9 @@ const Navbar = () => {
               }`}
               style={profileIsOpen ? stylesProfileOpen : {}}
             >
-              {/* <!-- item--> */}
-              <a class="dropdown-item" href="#">
-                <i class="ri-user-line align-middle me-1"></i> Profile
-              </a>
+              <NavLink to="/perfil" className="dropdown-item">
+              <i class="ri-user-line align-middle me-1"></i> Perfil
+              </NavLink>
               {/* <a class="dropdown-item" href="#">
                 <i class="ri-wallet-2-line align-middle me-1"></i> My Wallet
               </a>

@@ -31,16 +31,8 @@ const LogiView = ({
                           height="100"
                         />
                       </Link>
-
-                      {/* <img
-                        src="assets/images/logo-light.png"
-                        alt=""
-                        height="24"
-                        className="auth-logo logo-light mx-auto"
-                      /> */}
                   </div>
                   <h4 className="font-size-18 text-muted mt-2 text-center">
-                    {" "}
                     Bienvenido de nuevo!
                   </h4>
                   <p className="mb-5 text-center">

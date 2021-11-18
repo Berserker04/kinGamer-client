@@ -1,6 +1,8 @@
 .bgImage{
-    height: 100vh;
+    height: 70vh;
     width: 100vw;
-    /* background-image: url("../../assets/images/noFound.jpg"); */
-    background-size: cover;
+    background-image: url("../../../assets/videos/gif/noFound.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }

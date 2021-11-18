@@ -42,7 +42,7 @@ const Sidebar = () => {
             </li>
             <li className={`${pathname === "/noticias" ? "mm-active" : ""}`}>
               <NavLink to="/noticias" className="waves-effect">
-                <i class="mdi mdi-package-variant-closed"></i>
+                <i class="mdi mdi-newspaper-variant-multiple"></i>
                 {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
                 <span>Noticias</span>
               </NavLink>
