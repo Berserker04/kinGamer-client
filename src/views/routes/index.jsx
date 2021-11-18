@@ -14,6 +14,10 @@ import { useSelector } from "react-redux";
 import HomeClientContainer from "../client/home/HomeClientContainer";
 import ChatContainer from "../admin/chat/ChatContainer";
 import NewsContainer from "../client/news/NewsContainer";
+import ProductContainer from "../admin/product/ProductContainer";
+import ProductDetail from "../admin/product/components/ProductDetail";
+import NewsContainerAdmin from "../admin/news/NewsContainer";
+import NewsDetail from "../admin/news/components/NewsDetail";
 
 const App = () => {
   //   const { token } = useSelector((state) => state.auth);
@@ -32,6 +36,11 @@ const App = () => {
                 <Route path="/" element={<LayoutAdmin />}>
                   <Route index element={<HomeContainer />} />
                   <Route path="/chat" element={<ChatContainer />} />
+                  <Route path="/chat/:roomId" element={<ChatContainer />} />
+                  <Route path="/productos" element={<ProductContainer />} />
+                  <Route path="/productos/:slug" element={<ProductDetail/>} />
+                  <Route path="/noticias" element={<NewsContainerAdmin />} />
+                  <Route path="/noticias/:slug" element={<NewsDetail/>} />
                   <Route path="/perfil" element={<ProfileContainer />} />
                 </Route>
                 <Route element={<NoFound />} />

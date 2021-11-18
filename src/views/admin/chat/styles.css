@@ -8,3 +8,7 @@
     background-position: center;
     background-size: cover;
 }
+
+.btn-emoji{
+    cursor: pointer !important;
+}

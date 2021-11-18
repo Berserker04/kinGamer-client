@@ -10,7 +10,7 @@ const Sidebar = () => {
     document.getElementById("body-id").classList.toggle("g-sidenav-pinned");
   };
 
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
   const { pathname } = useLocation();
   return (
     <div class="vertical-menu">
@@ -31,6 +31,20 @@ const Sidebar = () => {
                 <i class="mdi mdi-chat"></i>
                 {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
                 <span>Chat</span>
+              </NavLink>
+            </li>
+            <li className={`${pathname === "/productos" ? "mm-active" : ""}`}>
+              <NavLink to="/productos" className="waves-effect">
+                <i class="mdi mdi-package-variant-closed"></i>
+                {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
+                <span>Productos</span>
+              </NavLink>
+            </li>
+            <li className={`${pathname === "/noticias" ? "mm-active" : ""}`}>
+              <NavLink to="/noticias" className="waves-effect">
+                <i class="mdi mdi-package-variant-closed"></i>
+                {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
+                <span>Noticias</span>
               </NavLink>
             </li>
           </ul>

@@ -1,7 +1,7 @@
-import React from "react";
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
-import { Outlet } from "react-router-dom";
+import React from 'react'
+import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
+import { Outlet } from 'react-router-dom'
 // import Employees from './pages/Employees';
 
 const Layout = ({ children }) => {
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
             {/* <!-- end page title --> */}
 
             <div class="row">
-              <Outlet/>
+              <Outlet />
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
         </footer>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

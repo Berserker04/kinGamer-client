@@ -273,16 +273,23 @@ const Navbar = () => {
                 screen
               </a> */}
               <div class="dropdown-divider"></div>
-              <Link
+              {/* <Link
                 class="dropdown-item text-danger"
                 replace
                 to="/login"
                 onClick={() => localStorage.removeItem('token')}
               >
-                {/* <a class="dropdown-item text-danger" href="/login"> */}
                 <i class="ri-shut-down-line align-middle me-1 text-danger"></i>{' '}
                 Salir
-              </Link>
+              </Link> */}
+              <a
+                class="dropdown-item text-danger"
+                href="/login"
+                onClick={() => localStorage.removeItem('token')}
+              >
+                <i class="ri-shut-down-line align-middle me-1 text-danger"></i>{' '}
+                Salir
+              </a>
             </div>
           </div>
         </div>

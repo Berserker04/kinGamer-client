@@ -66,5 +66,6 @@ export default function CheckAuth({ children }) {
   } else if (isCheck) {
     return children
   }
-  return <Navigate replace to="/login" />
+  // return <Navigate replace to="/login" />
+  window.location.href = "/login"
 }

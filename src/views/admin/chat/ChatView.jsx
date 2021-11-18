@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
+import Picker from 'emoji-picker-react'
 import mundoGamer from '../../../assets/images/logos/mundoGamer.jpg'
 import logo from '../../../assets/images/logos/logo.png'
-import ChatCardList from './components/ChatCardList'
-import ChatCardUser from './components/ChatCardUser'
+import ChatList from './components/ChatList'
+import MessageList from './components/MessageList'
+
 import './styles.css'
 
 export default function ChatView({
@@ -11,11 +13,21 @@ export default function ChatView({
   chatsPrivate,
   chatSelected,
   messages,
-  getMessages,
+  userSelected,
+  setUserSelected,
   sendMessage,
   setMessage,
   message,
+  roomId,
+  emoji,
+  setEmoji,
 }) {
+  const divRef = useRef(null)
+
+  useEffect(() => {
+    if (divRef.current) divRef.current.scrollIntoView({ behavior: 'smooth' })
+  })
+
   return (
     <div
       className=""
@@ -76,10 +88,12 @@ export default function ChatView({
               <h2 style={{ marginLeft: 10, color: '#22D3EE' }}>Chat público</h2>
               {/* <!-- CARD USER --> */}
               {chatsPublic.map((chat) => (
-                <ChatCardList
+                <ChatList
                   key={chat._id}
                   chat={chat}
-                  getMessages={getMessages}
+                  roomId={roomId}
+                  setUserSelected={setUserSelected}
+                  user={user}
                 />
               ))}
 
@@ -87,10 +101,12 @@ export default function ChatView({
                 Chats privados
               </h2>
               {chatsPrivate.map((chat) => (
-                <ChatCardList
+                <ChatList
                   key={chat._id}
                   chat={chat}
-                  getMessages={getMessages}
+                  roomId={roomId}
+                  setUserSelected={setUserSelected}
+                  user={user}
                 />
               ))}
             </div>
@@ -101,7 +117,7 @@ export default function ChatView({
               padding: 0,
             }}
           >
-            {!chatSelected._id ? (
+            {!chatSelected ? (
               <div
                 className="col-md-12 container-chat"
                 style={{
@@ -144,7 +160,9 @@ export default function ChatView({
                     width="50"
                     className="rounded-circle mx-2"
                   />{' '}
-                  <h2>Name User</h2>
+                  <h2>
+                    {userSelected ? userSelected?.user_name : 'Chat público'}
+                  </h2>
                 </div>
 
                 <div
@@ -158,44 +176,89 @@ export default function ChatView({
                   }}
                 >
                   <div className="col-md-12">
-                    {messages.map((message) => (
-                      <ChatCardUser
-                        key={message._id}
-                        message={message}
-                        pos={
-                          user._id === message.user ? 'flex-end' : 'flex-start'
-                        }
-                        color={user._id === message.user ? 'white' : 'black'}
-                        bg={user._id === message.user ? '#252F3E' : 'white'}
-                      />
-                    ))}
+                    {messages.map((message, i) => {
+                      return (
+                        <MessageList
+                          key={message._id}
+                          message={message}
+                          user={user}
+                          pos={
+                            user._id === message.user._id
+                              ? 'flex-end'
+                              : 'flex-start'
+                          }
+                          color={
+                            user._id === message.user._id ? 'white' : 'black'
+                          }
+                          bg={
+                            user._id === message.user._id ? '#252F3E' : 'white'
+                          }
+                          icon={
+                            messages[i + 1]?.user._id !== message.user._id &&
+                            user._id !== message.user._id
+                          }
+                        />
+                      )
+                    })}
+                    <div ref={divRef} />
                   </div>
 
                   <div
                     className="col-md-12"
                     style={{ position: 'absolute', bottom: 20 }}
                   >
-                    <form>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault()
+                        sendMessage()
+                      }}
+                    >
                       <div className="row">
                         <div className="col-md-8">
-                          <input
-                            type="text"
-                            className="form-control "
-                            placeholder="Texto..."
-                            value={message}
-                            onChange={({ target }) => setMessage(target.value)}
-                          />
-                        </div>
-                        <div className="col-md-2">
-                          <button
-                            type="button"
-                            class="btn btn-info waves-effect waves-light"
-                            style={{ width: '100%' }}
-                            onClick={() => sendMessage()}
+                          {emoji && (
+                            <Picker
+                              onEmojiClick={(e, { emoji }) =>
+                                setMessage(message + emoji)
+                              }
+                            />
+                          )}
+                          <label
+                            class="visually-hidden"
+                            for="inlineFormInputGroupUsername"
                           >
-                            <i class="fab fa-telegram-plane ms-2"></i>
-                          </button>
+                            Mensaje
+                          </label>
+                          <div className="input-group">
+                            <div
+                              className="input-group-text btn-emoji"
+                                onClick={() => setEmoji(!emoji)}
+                            >
+                              😃
+                            </div>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inlineFormInputGroupUsername"
+                              placeholder="Mensaje..."
+                              value={message}
+                              onChange={({ target }) =>
+                                setMessage(target.value)
+                              }
+                            />
+                          </div>
                         </div>
+                        {message && (
+                          <div className="col-md-2 d-flex align-items-end" >
+                            <button
+                              type="button"
+                              class="btn btn-info waves-effect waves-light"
+                              style={{ width: '100%' }}
+                              onClick={() => sendMessage()}
+                            >
+                              <i class="fab fa-telegram-plane ms-2"></i>
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </form>
                   </div>

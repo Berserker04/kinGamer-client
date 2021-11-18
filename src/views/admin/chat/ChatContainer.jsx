@@ -1,17 +1,26 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { API } from '../../../api'
+import { API, URL_SERVER } from '../../../api'
 import ChatView from './ChatView'
+import socketIOClient from 'socket.io-client'
+import { useLocation, useParams } from 'react-router'
+import useChat from '../../../hooks/useChat'
 
-export default function ChatContainer() {
+export default function ChatContainer(props) {
   const { user } = useSelector((state) => state.user)
   const { header } = useSelector((state) => state.auth)
 
+  const { roomId } = useParams()
+  const { messages, sendMessage } = useChat(roomId)
+
+  const [emoji, setEmoji] = useState(false)
+
   const [chatsPublic, setChatsPublic] = useState([])
   const [chatsPrivate, setChatsPrivate] = useState([])
-  const [messages, setMessages] = useState([])
-  const [message, setMessage] = useState('')
-  const [chatSelected, setChatSelected] = useState({})
+  //   const [messages, setMessages] = useState([])
+  const [newMessage, setNewMessage] = useState('')
+  const [chatSelected, setChatSelected] = useState('')
+  const [userSelected, setUserSelected] = useState({})
 
   const dispatch = useDispatch()
 
@@ -34,46 +43,40 @@ export default function ChatContainer() {
     } catch (error) {
       console.log(error)
     }
-  }, [setChatsPublic, setChatsPrivate])
+  }, [setChatsPublic, setChatsPrivate, header, user])
 
-  const getMessages = async (chat) => {
-    setChatSelected(chat)
-    try {
-      await API.GET(`/messages?chat=${chat._id}`, {}, header).then(
-        async ({ data }) => {
-          if (data.ok) {
-            console.log(data.body)
-            setMessages(data.body)
-          }
-        },
-      )
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const getMessages = useCallback(async () => {
+    setChatSelected(roomId)
+  }, [roomId])
 
-  const sendMessage = async () => {
+  const handleSendMessage = async () => {
     const data = {
-      message,
-      user: user._id,
-      chat: chatSelected._id,
+      message: newMessage,
+      user: user,
+      chat: roomId,
     }
-    messages.push(data)
-    setMessages([...messages])
-    setMessage('')
-    try {
-      await API.POST(`/messages`, data, header).then(async ({ data }) => {
-        if (data.ok) {
-        }
-      })
-    } catch (error) {
-      console.log(error)
-    }
+    sendMessage(data)
+    setNewMessage('')
+    setEmoji(false)
   }
+
+  const startSocket = useCallback(() => {
+    const socket = socketIOClient(URL_SERVER)
+    socket.on('chat message', (data) => {
+      if (chatSelected._id === data.chat && user._id !== data.user._id) {
+        messages.push(data)
+        // setMessages([...messages])
+      }
+    })
+  }, [user, chatSelected])
 
   useEffect(() => {
+    if (roomId) getMessages()
+    else setChatSelected('')
+
+    startSocket()
     getChats()
-  }, [getChats])
+  }, [getChats, startSocket, getMessages, roomId])
 
   return (
     <div>
@@ -82,11 +85,15 @@ export default function ChatContainer() {
         chatsPublic={chatsPublic}
         chatsPrivate={chatsPrivate}
         chatSelected={chatSelected}
-        message={message}
+        roomId={roomId}
+        message={newMessage}
         messages={messages}
-        getMessages={getMessages}
-        sendMessage={sendMessage}
-        setMessage={setMessage}
+        userSelected={userSelected}
+        setUserSelected={setUserSelected}
+        sendMessage={handleSendMessage}
+        setMessage={setNewMessage}
+        emoji={emoji}
+        setEmoji={setEmoji}
       />
     </div>
   )
