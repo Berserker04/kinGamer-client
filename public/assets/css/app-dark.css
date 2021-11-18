@@ -2750,5 +2750,6 @@ input[switch="dark"]:checked + label {
   bottom: 12px; }
 
 .error-text {
-  text-shadow: 4px 4px rgba(11, 177, 151, 0.4); }
-xt-shadow: -4px 4px rgba(11, 177, 151, 0.4); }
+  text-shadow: 4px 4px rgba(11, 177, 151, 0.4);
+ }
+ /* xt-shadow: -4px 4px rgba(11, 177, 151, 0.4);  */
