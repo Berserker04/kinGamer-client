@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
+import { URL_IMAGE } from '../../../../api'
 import logo from '../../../../assets/images/logos/logo.png'
 
 const Navbar = () => {
@@ -234,7 +235,7 @@ const Navbar = () => {
           <div class="dropdown d-inline-block user-dropdown">
             <button
               type="button"
-              className={`btn header-item waves-effect ${
+              className={`btn header-item waves-effect d-flex align-items-center ${
                 profileIsOpen ? 'show' : ''
               }`}
               id="page-header-user-dropdown"
@@ -245,7 +246,7 @@ const Navbar = () => {
             >
               <img
                 class="rounded-circle header-profile-user"
-                src={me.image ? me.image : logo}
+                src={me.image ? URL_IMAGE + me.image : logo}
                 alt="Header Avatar"
               />
               <span class="d-none d-xl-inline-block ms-1">{me.first_name}</span>
@@ -258,7 +259,7 @@ const Navbar = () => {
               style={profileIsOpen ? stylesProfileOpen : {}}
             >
               <NavLink to="/perfil" className="dropdown-item">
-              <i class="ri-user-line align-middle me-1"></i> Perfil
+                <i class="ri-user-line align-middle me-1"></i> Perfil
               </NavLink>
               {/* <a class="dropdown-item" href="#">
                 <i class="ri-wallet-2-line align-middle me-1"></i> My Wallet
