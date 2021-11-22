@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { API } from '../../../../api'
+import { API } from '../../../../../api'
 import NewsCard from './NewsCard'
 
 export default function NewsLast() {

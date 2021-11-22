@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import mundoGamer from '../../../../assets/images/logos/mundoGamer.jpg'
-import defaultChat from '../../../../assets/images/img/defaultChat.jpg'
+import mundoGamer from '../../../../../assets/images/logos/mundoGamer.jpg'
+import defaultChat from '../../../../../assets/images/img/defaultChat.jpg'
 import '../styles.css'
 import { NavLink } from 'react-router-dom'
-import { URL_IMAGE } from '../../../../api'
+import { URL_IMAGE } from '../../../../../api'
 
 export default function ChatList({ chat, setUserSelected, user, roomId }) {
   let name = {

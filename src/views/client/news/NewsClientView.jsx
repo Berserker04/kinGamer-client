@@ -4,7 +4,7 @@ import cpu from '../../../assets/images/img/CPUGPU.jpg'
 import juice from '../../../assets/images/img/Juice_Noche.png'
 import punk from '../../../assets/images/img/cyberpunk.jpg'
 import './styles.css'
-import NewsList from '../../admin/news/components/NewsList'
+import NewsList from '../../dashboard/client/news/components/NewsList'
 export default function NewsClientView() {
   return (
     <>

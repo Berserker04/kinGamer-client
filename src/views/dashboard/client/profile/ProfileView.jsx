@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { URL_IMAGE } from '../../../api'
-import imgDefault from "../../../assets/images/img/defaultChat.jpg"
+import { URL_IMAGE } from '../../../../api'
+import imgDefault from "../../../../assets/images/img/defaultChat.jpg"
 
 export default function ProfileView({
   user,

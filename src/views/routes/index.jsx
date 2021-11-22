@@ -10,14 +10,14 @@ import LayoutAdmin from '../../components/layout/admin/Layout'
 import LayoutClient from '../../components/layout/client/Layout'
 import { useSelector } from 'react-redux'
 
-// Admin
-import HomeContainer from '../admin/home/HomeContainer'
-import ProfileContainer from '../admin/profile/ProfileContainer'
-import ChatContainer from '../admin/chat/ChatContainer'
-import ProductContainer from '../admin/product/ProductContainer'
-import ProductDetail from '../admin/product/components/ProductDetail'
-import NewsContainerAdmin from '../admin/news/NewsContainer'
-import NewsDetail from '../admin/news/components/NewsDetail'
+// Dashboard Client
+import HomeContainer from '../dashboard/client/home/HomeContainer'
+import ProfileContainer from '../dashboard/client/profile/ProfileContainer'
+import ChatContainer from '../dashboard/client/chat/ChatContainer'
+import ProductContainer from '../dashboard/client/product/ProductContainer'
+import ProductDetail from '../dashboard/client/product/components/ProductDetail'
+import NewsContainerAdmin from '../dashboard/client/news/NewsContainer'
+import NewsDetail from '../dashboard/client/news/components/NewsDetail'
 
 // Client
 import HomeClientContainer from '../client/home/HomeClientContainer'

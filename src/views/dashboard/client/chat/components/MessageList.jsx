@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../../../assets/images/logos/logo.png'
+import logo from '../../../../../assets/images/logos/logo.png'
 
 export default function MessageList({
   message,

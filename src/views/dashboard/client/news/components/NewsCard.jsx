@@ -1,7 +1,7 @@
 import moment from 'moment'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { URL_IMAGE } from '../../../../api'
+import { URL_IMAGE } from '../../../../../api'
 import "moment/min/locales";
 moment.locale('es');
 

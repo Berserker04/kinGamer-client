@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { API } from '../../../../api'
+import { API } from '../../../../../api'
 import ProductCard from './ProductCard'
 
 export default function ProductList() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { API } from "../../../api";
-import { listUsers } from "../../../redux/actions/users";
+import { API } from "../../../../api";
+import { listUsers } from "../../../../redux/actions/users";
 import HomeView from "./HomeView";
 
 export default function HomeContainer() {

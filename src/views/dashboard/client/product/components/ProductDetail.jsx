@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { API, URL_IMAGE } from '../../../../api'
+import { API, URL_IMAGE } from '../../../../../api'
 import ProductLast from './ProductLast'
 import { useNavigate } from 'react-router-dom'
 

@@ -10,7 +10,7 @@ import laptop from '../../../assets//images/images/portatil.jpg'
 import screen from '../../../assets//images/images/pantalla.jpg'
 import desk from '../../../assets//images/images/escritorio.jpg'
 import './styles.css'
-import ProductList from '../../admin/product/components/ProductList'
+import ProductList from '../../dashboard/client/product/components/ProductList'
 export default function productClientView() {
   return (
     <div className="products-container">

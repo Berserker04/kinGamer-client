@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Picker from 'emoji-picker-react'
-import mundoGamer from '../../../assets/images/logos/mundoGamer.jpg'
-import logo from '../../../assets/images/logos/logo.png'
+import mundoGamer from '../../../../assets/images/logos/mundoGamer.jpg'
+import logo from '../../../../assets/images/logos/logo.png'
 import ChatList from './components/ChatList'
 import MessageList from './components/MessageList'
 

@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { API, URL_SERVER } from '../../../api'
+import { API, URL_SERVER } from '../../../../api'
 import ChatView from './ChatView'
 import socketIOClient from 'socket.io-client'
 import { useLocation, useParams } from 'react-router'
-import useChat from '../../../hooks/useChat'
+import useChat from '../../../../hooks/useChat'
 
 export default function ChatContainer(props) {
   const { user } = useSelector((state) => state.user)
