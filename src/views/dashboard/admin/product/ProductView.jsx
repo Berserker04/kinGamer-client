@@ -8,6 +8,7 @@ export default function ProductView({
   setShowModal,
   form,
   onChange,
+  titleForm,
   sendForm,
   changeState,
   setProductEdit,
@@ -31,7 +32,7 @@ export default function ProductView({
 
       <ModalView
         show={showModal}
-        title="Agregando producto"
+        title={titleForm}
         onHide={setShowModal}
         btnSuccess={() => sendForm()}
         btnSuccessTitle="Guardar"

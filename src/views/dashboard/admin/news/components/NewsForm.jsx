@@ -3,7 +3,7 @@ import { URL_IMAGE } from '../../../../../api'
 import imgDefault from '../../../../../assets/images/img/defaultChat.jpg'
 import imgUpLoad from '../../../../../assets/images/logos/imgUpLoad.jpg'
 
-export default function ProductForm({ form, onChange }) {
+export default function NewsForm({ form, onChange }) {
   const [newImage, setNewImage] = useState(false)
   const handleFiles = () => {
     let files = document.querySelector(`#upload-images`)?.files
@@ -65,31 +65,17 @@ export default function ProductForm({ form, onChange }) {
           <div class="col-md-12">
             <div class="mb-4">
               <label class="form-label" for="username">
-                Nombre *
+                Titulo *
               </label>
               <input
                 type="text"
                 class="form-control"
                 id="username"
                 placeholder="Nombre"
-                name="name"
+                name="title"
                 onChange={onChange}
-                value={form.name}
+                value={form.title}
                 required
-              />
-            </div>
-            <div class="mb-4">
-              <label class="form-label" for="useremail">
-                URl Compra *
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="useremail"
-                placeholder="Apellido"
-                name="urlBuy"
-                onChange={onChange}
-                value={form.urlBuy}
               />
             </div>
             <div class="mb-4">

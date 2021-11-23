@@ -14,6 +14,7 @@ const initialForm = {
 
 export default function ProductContainer() {
   const [showModal, setShowModal] = useState(false)
+  const [isAdd, setIsAdd] = useState(() => null)
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const { header } = useSelector((state) => state.auth)
@@ -25,11 +26,6 @@ export default function ProductContainer() {
       ...form,
       [e.target.name]: e.target.value,
     })
-  }
-
-  const setProductEdit = (product) => {
-    setForm(product)
-    setShowModal(!showModal)
   }
 
   const changeState = async (product) => {
@@ -59,9 +55,8 @@ export default function ProductContainer() {
     })
   }
 
-  const sendForm = async () => {
+  async function sendForm() {
     setLoading(true)
-
     await API.POST(`/product`, form).then(({ data }) => {
       if (data.ok) {
         Swal.fire({
@@ -88,12 +83,55 @@ export default function ProductContainer() {
     setLoading(false)
   }
 
+  const sendFormEdit = async () => {
+    setLoading(true)
+
+    if (!form.image.includes('data:image/png;base64')) delete form.image
+    await API.PUT(`/product/${form._id}`, form).then(({ data }) => {
+      if (data.ok) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        setShowModal(false)
+        setForm(initialForm)
+        dispatch(listProducts(header))
+      } else {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    })
+    // setBtnSend(true)
+    setLoading(false)
+  }
+
+  const setProductAdd = () => {
+    setForm(initialForm)
+    setIsAdd(true)
+    setShowModal(!showModal)
+  }
+
+  const setProductEdit = (product) => {
+    setForm(product)
+    setIsAdd(false)
+    setShowModal(!showModal)
+  }
+
   return (
     <ProductView
       showModal={showModal}
-      setShowModal={() => setShowModal(!showModal)}
+      setShowModal={setProductAdd}
       form={form}
-      sendForm={sendForm}
+      titleForm={isAdd ? "Agregar producto" : "Actualizar producto"}
+      sendForm={isAdd ? sendForm : sendFormEdit}
       onChange={onChange}
       changeState={changeState}
       setProductEdit={setProductEdit}

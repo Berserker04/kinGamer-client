@@ -26,6 +26,11 @@ const Navbar = () => {
     document.getElementById('body-id').classList.toggle('g-sidenav-pinned')
   }
 
+  const toggleMenu = () => {
+    document.body.classList.toggle('sidebar-enable')
+    document.body.classList.toggle('vertical-collpsed')
+  }
+
   return (
     <header id="page-topbar">
       <div class="navbar-header">
@@ -43,6 +48,7 @@ const Navbar = () => {
             type="button"
             class="btn btn-sm px-3 font-size-24 header-item waves-effect"
             id="vertical-menu-btn"
+            onClick={toggleMenu}
           >
             <i class="ri-menu-2-line align-middle"></i>
           </button>

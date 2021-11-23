@@ -7,7 +7,7 @@ export default function ProductList() {
   const [productsFilter, setProductsFilter] = useState([])
 
   const getProducts = useCallback(() => {
-    API.GET('/product').then(({ data }) => {
+    API.GET('/product?state=true').then(({ data }) => {
       if (data.ok) {
         setProducts(data.body)
         setProductsFilter(data.body)

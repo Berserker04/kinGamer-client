@@ -21,6 +21,7 @@ import NewsDetail from '../dashboard/client/news/components/NewsDetail'
 
 // Dashboard Admin
 import ProductAdminContainer from '../dashboard/admin/product/ProductContainer'
+import NewsAdminContainer from '../dashboard/admin/news/NewsContainer'
 
 
 // Client
@@ -55,6 +56,7 @@ const App = () => {
                 <Route path="/perfil" element={<ProfileContainer />} />
 
                 <Route path="/admin/productos" element={<ProductAdminContainer />} />
+                <Route path="/admin/noticias" element={<NewsAdminContainer />} />
 
               </Route>
               <Route element={<NoFound />} />

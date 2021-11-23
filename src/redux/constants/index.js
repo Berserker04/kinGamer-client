@@ -9,6 +9,11 @@ export const typeStore = {
     productsFilter: "product Filter",
   },
 
+  news: {
+    list: "news list",
+    newsFilter: "news Filter",
+  },
+
   specialty: {
     list: "specialty list",
     filter: "specialty filter",

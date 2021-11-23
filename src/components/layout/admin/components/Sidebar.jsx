@@ -10,6 +10,8 @@ const Sidebar = () => {
     document.getElementById('body-id').classList.toggle('g-sidenav-pinned')
   }
 
+  const { user, me } = useSelector((state) => state.user)
+
   // const { user } = useSelector((state) => state.user);
   const { pathname } = useLocation()
   return (
@@ -47,32 +49,46 @@ const Sidebar = () => {
                 <span>Noticias</span>
               </NavLink>
             </li>
-            <li>
-              <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
-                <i class="mdi mdi-format-page-break"></i>
-                <span>Admin</span>
-              </a>
-              <ul class="sub-menu" aria-expanded="false" style={{height:0}}>
-                <li
-                  className={`${pathname === '/admin/productos' ? 'mm-active' : ''}`}
+            {user.role === 'Admin' && (
+              <li>
+                <a
+                  href="javascript: void(0);"
+                  class="waves-effect"
+                  aria-expanded="false"
                 >
-                  <NavLink to="/admin/productos" className="waves-effect">
-                    <i class="mdi mdi-package-variant-closed"></i>
-                    {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
-                    <span>Productos</span>
-                  </NavLink>
-                </li>
-                <li
-                  className={`${pathname === '/admin/noticias' ? 'mm-active' : ''}`}
+                  <i class="fas fa-cog"></i>
+                  <span>Admin</span>
+                </a>
+                <ul
+                  class="sub-menu"
+                  aria-expanded="false"
+                  style={{ height: 0 }}
                 >
-                  <NavLink to="/admin/noticias" className="waves-effect">
-                    <i class="mdi mdi-newspaper-variant-multiple"></i>
-                    {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
-                    <span>Noticias</span>
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
+                  <li
+                    className={`${
+                      pathname === '/admin/productos' ? 'mm-active' : ''
+                    }`}
+                  >
+                    <NavLink to="/admin/productos" className="waves-effect">
+                      <i class="mdi mdi-package-variant-closed"></i>
+                      {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
+                      <span>Productos</span>
+                    </NavLink>
+                  </li>
+                  <li
+                    className={`${
+                      pathname === '/admin/noticias' ? 'mm-active' : ''
+                    }`}
+                  >
+                    <NavLink to="/admin/noticias" className="waves-effect">
+                      <i class="mdi mdi-newspaper-variant-multiple"></i>
+                      {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
+                      <span>Noticias</span>
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+            )}
           </ul>
         </div>
         {/* <!-- Sidebar --> */}

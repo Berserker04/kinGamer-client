@@ -7,7 +7,7 @@ export default function NewsList() {
   const [newsFilter, setNewsFilter] = useState([])
 
   const getNews = useCallback(() => {
-    API.GET('/news').then(({ data }) => {
+    API.GET('/news?state=true').then(({ data }) => {
       if (data.ok) {
         setNews(data.body)
         setNewsFilter(data.body)
