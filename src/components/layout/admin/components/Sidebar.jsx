@@ -54,18 +54,18 @@ const Sidebar = () => {
               </a>
               <ul class="sub-menu" aria-expanded="false" style={{height:0}}>
                 <li
-                  className={`${pathname === '/productos' ? 'mm-active' : ''}`}
+                  className={`${pathname === '/admin/productos' ? 'mm-active' : ''}`}
                 >
-                  <NavLink to="/productos" className="waves-effect">
+                  <NavLink to="/admin/productos" className="waves-effect">
                     <i class="mdi mdi-package-variant-closed"></i>
                     {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
                     <span>Productos</span>
                   </NavLink>
                 </li>
                 <li
-                  className={`${pathname === '/noticias' ? 'mm-active' : ''}`}
+                  className={`${pathname === '/admin/noticias' ? 'mm-active' : ''}`}
                 >
-                  <NavLink to="/noticias" className="waves-effect">
+                  <NavLink to="/admin/noticias" className="waves-effect">
                     <i class="mdi mdi-newspaper-variant-multiple"></i>
                     {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
                     <span>Noticias</span>

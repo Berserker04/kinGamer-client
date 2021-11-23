@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
           <img
             className="card-img-top img-fluid"
             src={URL_IMAGE + product.image}
-            style={{ height: 350 }}
+            style={{ height: 200 }}
             alt={product.image}
           />
         </Link>

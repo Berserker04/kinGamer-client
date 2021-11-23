@@ -19,6 +19,10 @@ import ProductDetail from '../dashboard/client/product/components/ProductDetail'
 import NewsContainerAdmin from '../dashboard/client/news/NewsContainer'
 import NewsDetail from '../dashboard/client/news/components/NewsDetail'
 
+// Dashboard Admin
+import ProductAdminContainer from '../dashboard/admin/product/ProductContainer'
+
+
 // Client
 import HomeClientContainer from '../client/home/HomeClientContainer'
 import NewsClienntContainer from '../client/news/NewsClientContainer'
@@ -49,6 +53,9 @@ const App = () => {
                 <Route path="/noticias" element={<NewsContainerAdmin />} />
                 <Route path="/noticias/:slug" element={<NewsDetail />} />
                 <Route path="/perfil" element={<ProfileContainer />} />
+
+                <Route path="/admin/productos" element={<ProductAdminContainer />} />
+
               </Route>
               <Route element={<NoFound />} />
             </Routes>

@@ -1,25 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { API } from '../../../../api'
+import { useDispatch, useSelector } from 'react-redux'
+import { API } from '../../../../../api'
+import {
+  listProducts,
+  ProductsFilter,
+} from '../../../../../redux/actions/product'
 import ProductCard from './ProductCard'
 
-export default function ProductList() {
-  const [products, setProducts] = useState([])
-  const [productsFilter, setProductsFilter] = useState([])
+export default function ProductList({ btnAdd, changeState, setProductEdit }) {
+  // const [products, setProducts] = useState([])
+  // const [productsFilter, setProductsFilter] = useState([])
+  const { header } = useSelector((state) => state.auth)
+  const { products, productsFilter } = useSelector((state) => state.product)
+
+  const dispatch = useDispatch()
 
   const getProducts = useCallback(() => {
-    API.GET('/product').then(({ data }) => {
-      if (data.ok) {
-        setProducts(data.body)
-        setProductsFilter(data.body)
-      }
-    })
-  }, [setProducts])
+    dispatch(listProducts(header))
+  }, [dispatch, header])
 
   const handleFiler = ({ target }) => {
     const filter = products.filter((p) =>
       p.name.toLowerCase().includes(target.value.toLowerCase()),
     )
-    setProductsFilter(filter)
+    dispatch(ProductsFilter(filter))
   }
 
   useEffect(() => {
@@ -37,10 +41,48 @@ export default function ProductList() {
           onChange={handleFiler}
         />
       </div>
+
+      {btnAdd}
+
       <hr />
-      {productsFilter.map((product) => (
+      {/* {productsFilter.map((product) => (
         <ProductCard key={product._id} product={product} />
-      ))}
+      ))} */}
+      <div class="card">
+        <div class="card-body">
+          <table
+            id="datatable"
+            class="table table-bordered dt-responsive nowrap"
+            // style="border-collapse: collapse; border-spacing: 0; width: 100%;"
+            style={{
+              borderCollapse: 'collapse',
+              borderSpacing: 0,
+              width: '100%',
+            }}
+          >
+            <thead>
+              <tr style={{ textAlign: 'center' }}>
+                <th>Nombre del producto</th>
+                <th>Imagen</th>
+                <th>URL de compra</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {productsFilter.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  changeState={changeState}
+                  setProductEdit={setProductEdit}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
   )
 }

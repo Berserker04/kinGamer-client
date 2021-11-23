@@ -1,50 +1,55 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { URL_IMAGE } from '../../../../api'
+import { URL_IMAGE } from '../../../../../api'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, changeState, setProductEdit }) {
   return (
-    <div class="col-md-6 col-xl-3">
-      <div class="card product-item">
-        <Link to={`/productos/${product.slug}`}>
-          <img
-            className="card-img-top img-fluid"
-            src={URL_IMAGE + product.image}
-            style={{ height: 350 }}
-            alt={product.image}
-          />
-        </Link>
-        <div class="card-body" style={{ width: '100%' }}>
-          <h4 class="card-title ">{product.name}</h4>
-          <p class="card-text">{product.description}</p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href={product.urlBuy}
-            class="btn btn-success waves-effect waves-light"
-            style={{ marginRight: 5 }}
+    <tr>
+      <td>{product.name}</td>
+      <td align="center">
+        <img
+          className="card-img-top img-fluid"
+          src={URL_IMAGE + product.image}
+          style={{ height: 60, width: 100 }}
+          alt={product.image}
+        />
+      </td>
+      <td align="center">
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href={product.urlBuy}
+          class="btn btn-info waves-effect waves-light"
+          style={{ marginRight: 5 }}
+        >
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+      </td>
+      <td align="center">
+        {product.state ? (
+          <button
+            className="btn btn-success"
+            onClick={() => changeState(product)}
           >
-            Ir a comprar
-          </a>
-          <Link to={`/productos/${product.slug}`} class="btn btn-info">
-            Ver detalle
-          </Link>
-        </div>
-      </div>
-    </div>
-
-    //   <div className="product-item">
-    //       <div className="img-container">
-    //         <img src={pc} alt="img-product.png" />
-    //       </div>
-    //       <p>
-    //         lorem 1 b random lorem 1 b random lorem 1 b random lorem 1 b random
-    //         lorem 1 b random lorem 1 b random lorem 1 b random
-    //       </p>
-    //       <a href=".">
-    //         <button className="btn-buy">Ir a comprar</button>
-    //       </a>
-    //       <button className="btn-details">Ver detalles</button>
-    //     </div>
+            <i class="fas fa-toggle-on"></i>
+          </button>
+        ) : (
+          <button
+            className="btn btn-danger"
+            onClick={() => changeState(product)}
+          >
+            <i class="fas fa-toggle-off"></i>
+          </button>
+        )}
+      </td>
+      <td align="center">
+        <button
+          className="btn btn-outline-warning"
+          onClick={() => setProductEdit(product)}
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+      </td>
+    </tr>
   )
 }

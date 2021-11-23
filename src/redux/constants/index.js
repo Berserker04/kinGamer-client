@@ -4,9 +4,9 @@ export const typeStore = {
     header: "auth header",
   },
 
-  profession: {
-    list: "profession list",
-    professionsFilter: "profession Filter",
+  product: {
+    list: "product list",
+    productsFilter: "product Filter",
   },
 
   specialty: {
