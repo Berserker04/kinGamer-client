@@ -4,9 +4,7 @@ import imgDefault from "../../../../assets/images/img/defaultChat.jpg"
 
 export default function ProfileView({
   user,
-  specialties,
   form,
-  professions,
   formChange,
   update,
   onChange,

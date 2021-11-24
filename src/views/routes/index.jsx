@@ -23,7 +23,6 @@ import NewsDetail from '../dashboard/client/news/components/NewsDetail'
 import ProductAdminContainer from '../dashboard/admin/product/ProductContainer'
 import NewsAdminContainer from '../dashboard/admin/news/NewsContainer'
 
-
 // Client
 import HomeClientContainer from '../client/home/HomeClientContainer'
 import NewsClienntContainer from '../client/news/NewsClientContainer'
@@ -55,11 +54,16 @@ const App = () => {
                 <Route path="/noticias/:slug" element={<NewsDetail />} />
                 <Route path="/perfil" element={<ProfileContainer />} />
 
-                <Route path="/admin/productos" element={<ProductAdminContainer />} />
-                <Route path="/admin/noticias" element={<NewsAdminContainer />} />
-
+                <Route
+                  path="/admin/productos"
+                  element={<ProductAdminContainer />}
+                />
+                <Route
+                  path="/admin/noticias"
+                  element={<NewsAdminContainer />}
+                />
+                <Route path="/*" element={<NoFound />} />
               </Route>
-              <Route element={<NoFound />} />
             </Routes>
             {/* </LayoutAdmin> */}
           </div>

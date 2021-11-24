@@ -1,19 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { API } from '../../../../api'
 import { refreshHeader } from '../../../../redux/actions/auth'
-import { listProfessions } from '../../../../redux/actions/product'
-import { listSpecialties } from '../../../../redux/actions/specialty'
 import { getUser, Me, updateUser, User } from '../../../../redux/actions/users'
 import ProfileView from './ProfileView'
 export default function ProfileContainer() {
   const dispatch = useDispatch()
   const { header } = useSelector((state) => state.auth)
   const { user, me } = useSelector((state) => state.user)
-  const { specialties } = useSelector((state) => state.specialty)
-  const { professions } = useSelector((state) => state.profession)
   const [updateFinish, setUpdateFinish] = useState(false)
   const [loading, setLoading] = useState(false)
   const [btnSend, setBtnSend] = useState(true)
@@ -124,8 +120,6 @@ export default function ProfileContainer() {
         update={update}
         user={user}
         btnSend={btnSend}
-        specialties={specialties}
-        professions={professions}
         onChange={onChange}
         handleUpdate={handleUpdate}
       />
