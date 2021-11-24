@@ -31,18 +31,12 @@ import ProductClienntContainer from '../client/product/productClientContainer'
 // Dashboar
 
 const App = () => {
-  //   const { token } = useSelector((state) => state.auth);
   const token = localStorage.getItem('token')
   return (
     <BrowserRouter>
-      {/* <Routes>
-        <Route path="/registrar" element={<RegisterContainer />} />
-        <Route path="/login" element={<LoginContainer />} />
-      </Routes> */}
       {token ? (
         <CheckAuth>
           <div id="body-id" className="g-sidenav-show  bg-gray-100">
-            {/* <LayoutAdmin> */}
             <Routes>
               <Route path="/" element={<LayoutAdmin />}>
                 <Route index element={<HomeContainer />} />
@@ -65,7 +59,6 @@ const App = () => {
                 <Route path="/*" element={<NoFound />} />
               </Route>
             </Routes>
-            {/* </LayoutAdmin> */}
           </div>
         </CheckAuth>
       ) : (
