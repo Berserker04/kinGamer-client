@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { API } from '../../../../../api'
-import {
-  listNews,
-  NewsFilter,
-} from '../../../../../redux/actions/news'
+import { listNews, NewsFilter } from '../../../../../redux/actions/news'
 import NewsCard from './NewsCard'
 
 export default function NewsList({ btnAdd, changeState, setNewsEdit }) {
@@ -70,6 +67,11 @@ export default function NewsList({ btnAdd, changeState, setNewsEdit }) {
             </thead>
 
             <tbody>
+              {!newsFilter.length && (
+                <tr>
+                  <td colSpan="4" align="center">No hay datos registrados</td>
+                </tr>
+              )}
               {newsFilter.map((news) => (
                 <NewsCard
                   key={news._id}

@@ -19,6 +19,7 @@ export default function ProductLast() {
 
   return (
     <>
+      ´{!products.length && <h3 align="center">No hay datos registrados</h3>}
       {products.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}

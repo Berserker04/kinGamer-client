@@ -1,26 +1,22 @@
-import React, {useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { API } from '../../../../api'
 import { refreshHeader } from '../../../../redux/actions/auth'
-import { getUser, Me, updateUser, User } from '../../../../redux/actions/users'
+import { Me, User } from '../../../../redux/actions/users'
 import ProfileView from './ProfileView'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 export default function ProfileContainer() {
   const dispatch = useDispatch()
   const { header } = useSelector((state) => state.auth)
   const { user, me } = useSelector((state) => state.user)
-  const [updateFinish, setUpdateFinish] = useState(false)
   const [loading, setLoading] = useState(false)
   const [btnSend, setBtnSend] = useState(true)
 
   const [form, setForm] = useState({ ...me, ...user })
-
-  // const getData = useCallback(async () => {
-  //   dispatch(listSpecialties(header));
-  //   dispatch(listProfessions(header));
-  //   setForm(user);
-  // }, [dispatch, setForm, getUser]);
 
   const onChange = (e) => {
     setBtnSend(false)
@@ -33,14 +29,12 @@ export default function ProfileContainer() {
   const handleUpdate = async () => {
     setLoading(true)
 
-    let { first_name, last_name, image, ...user } = form
+    let { image, ...user } = form
 
     if (me.image === image) image = null
 
     let data = {
       _id: me._id,
-      first_name,
-      last_name,
       image,
       user,
     }
@@ -83,45 +77,70 @@ export default function ProfileContainer() {
     setBtnSend(true)
     setLoading(false)
   }
+  const handleUpdatePassword = async (values) => {
+    setLoading(true)
 
-  useEffect(() => {
-    // getData();
-  }, [])
+    await API.PUT(`/user/password/${user._id}`, values).then(({ data }) => {
+      if (data.ok) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      } else {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    })
+    setLoading(false)
+  }
 
   const formChange = ({ name, value }) => {
     setBtnSend(false)
     setForm({ ...form, [name]: value })
   }
 
-  const update = async () => {
-    let isOk = false
+  const formik = useFormik({
+    initialValues: {
+      user_name: user.user_name,
+      password: '',
+      oldPassword: '',
+    },
+    validationSchema: Yup.object({
+      oldPassword: Yup.string()
+        .max(15, 'Debe tener 15 caracteres o menos')
+        .min(8, 'Debe tener 8 caracteres minimo')
+        .required('Ingresa un usuario valido'),
+      password: Yup.string()
+        .max(15, 'Debe tener 15 caracteres o menos')
+        .min(8, 'Debe tener 8 caracteres minimo')
+        .required('Ingresa una contraseña valida'),
+    }),
+    onSubmit: (values) => {
+      handleUpdatePassword(values)
+    },
+  })
 
-    form.user = {
-      password: form.password ? form.password : null,
-      role_id: form.role_id,
-      state: form.state,
-    }
-
-    isOk = await dispatch(updateUser(form, header))
-    setTimeout(() => {
-      //   window.location.href = "/";
-      setUpdateFinish(true)
-    }, 2000)
-    // if (isOk) reset();
-  }
-
-  if (updateFinish) return <Navigate to="/" />
+  // if (updateFinish) return <Navigate to="/" />
 
   return (
     <div>
       <ProfileView
         formChange={formChange}
         form={form}
-        update={update}
         user={user}
         btnSend={btnSend}
         onChange={onChange}
         handleUpdate={handleUpdate}
+        handleUpdatePassword={handleUpdatePassword}
+        formik={formik}
       />
     </div>
   )

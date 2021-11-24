@@ -38,6 +38,7 @@ export default function NewsList() {
         />
       </div>
       <hr />
+      {!newsFilter.length && <h3 align="center">No hay datos registrados</h3>}
       {newsFilter.map((news) => (
         <NewsCard key={news._id} news={news} />
       ))}

@@ -5,7 +5,7 @@ import logo from '../../assets/images/logos/logo.png'
 // import logo from "../../assets/images/logo.png";
 import './styles/styles.css'
 
-const RegisterView = ({ onChange, register, form }) => (
+const RegisterView = ({ onChange, register, form, formik, loading }) => (
   <div className="bg-pattern">
     <div className="bg-overlay"></div>
     <div
@@ -28,36 +28,9 @@ const RegisterView = ({ onChange, register, form }) => (
                 <p className="mb-5 text-center">
                   Y podras conocer más personas gamer.
                 </p>
-                <form class="form-horizontal" action="index.html">
+                <form class="form-horizontal" onSubmit={formik.handleSubmit}>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="mb-4">
-                        <label class="form-label" for="username">
-                          Nombre *
-                        </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="username"
-                          placeholder="Nombre"
-                          name="first_name"
-                          onChange={onChange}
-                          required
-                        />
-                      </div>
-                      <div class="mb-4">
-                        <label class="form-label" for="useremail">
-                          Apellido
-                        </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="useremail"
-                          placeholder="Apellido"
-                          name="last_name"
-                          onChange={onChange}
-                        />
-                      </div>
                       <div class="mb-4">
                         <label class="form-label" for="user_name">
                           Usuario *
@@ -68,9 +41,14 @@ const RegisterView = ({ onChange, register, form }) => (
                           id="useremail"
                           placeholder="Usuario"
                           name="user_name"
-                          onChange={onChange}
-                          required
+                          onChange={formik.handleChange}
+                          // required
                         />
+                        {formik.touched.user_name && formik.errors.user_name ? (
+                          <div style={{ color: 'pink' }}>
+                            {formik.errors.user_name}
+                          </div>
+                        ) : null}
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="useremail">
@@ -82,9 +60,14 @@ const RegisterView = ({ onChange, register, form }) => (
                           id="useremail"
                           placeholder="Correo electronico"
                           name="email"
-                          onChange={onChange}
-                          required
+                          onChange={formik.handleChange}
+                          // required
                         />
+                        {formik.touched.email && formik.errors.email ? (
+                          <div style={{ color: 'pink' }}>
+                            {formik.errors.email}
+                          </div>
+                        ) : null}
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="userpassword">
@@ -96,9 +79,33 @@ const RegisterView = ({ onChange, register, form }) => (
                           id="userpassword"
                           placeholder="Contraseña"
                           name="password"
-                          onChange={onChange}
-                          required
+                          onChange={formik.handleChange}
+                          // required
                         />
+                        {formik.touched.password && formik.errors.password ? (
+                          <div style={{ color: 'pink' }}>
+                            {formik.errors.password}
+                          </div>
+                        ) : null}
+                      </div>
+                      <div class="mb-4">
+                        <label class="form-label" for="userpassword">
+                          Confirmar contraseña *
+                        </label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="userpassword2"
+                          placeholder="Confirmar contraseña"
+                          name="password2"
+                          onChange={formik.handleChange}
+                          // required
+                        />
+                        {formik.touched.password2 && formik.errors.password2 ? (
+                          <div style={{ color: 'pink' }}>
+                            {formik.errors.password2}
+                          </div>
+                        ) : null}
                       </div>
                       <div class="form-check">
                         <input
@@ -124,11 +131,15 @@ const RegisterView = ({ onChange, register, form }) => (
                       <div class="d-grid mt-4">
                         <button
                           class="btn btn-primary waves-effect waves-light"
-                          type="button"
-                          onClick={() => register()}
-                          disabled={form.acceptTerms !== 'true' ? true : false}
+                          type="submit"
+                          // onClick={() => register()}
+                          disabled={
+                            form.acceptTerms !== 'true' || loading
+                              ? true
+                              : false
+                          }
                         >
-                          Registrar
+                          {loading ? 'Registrando...' : 'Registrar'}
                         </button>
                       </div>
                     </div>

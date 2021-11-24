@@ -71,6 +71,13 @@ export default function ProductList({ btnAdd, changeState, setProductEdit }) {
             </thead>
 
             <tbody>
+              {!productsFilter.length && (
+                <tr>
+                  <td colSpan="5" align="center">
+                    No hay datos registrados
+                  </td>
+                </tr>
+              )}
               {productsFilter.map((product) => (
                 <ProductCard
                   key={product._id}

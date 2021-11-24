@@ -9,6 +9,7 @@
     "axios": "^0.24.0",
     "emoji-mart": "^3.0.1",
     "emoji-picker-react": "^3.4.8",
+    "formik": "^2.2.9",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
@@ -23,7 +24,8 @@
     "serve": "^13.0.2",
     "socket.io-client": "^4.3.2",
     "sweetalert2": "^11.1.10",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

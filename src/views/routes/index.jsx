@@ -32,6 +32,7 @@ import ProductClienntContainer from '../client/product/productClientContainer'
 
 const App = () => {
   const token = localStorage.getItem('token')
+  const { user } = useSelector((state) => state.user)
   return (
     <BrowserRouter>
       {token ? (
@@ -48,14 +49,19 @@ const App = () => {
                 <Route path="/noticias/:slug" element={<NewsDetail />} />
                 <Route path="/perfil" element={<ProfileContainer />} />
 
-                <Route
-                  path="/admin/productos"
-                  element={<ProductAdminContainer />}
-                />
-                <Route
-                  path="/admin/noticias"
-                  element={<NewsAdminContainer />}
-                />
+                {user.role === 'Admin' && (
+                  <>
+                    <Route
+                      path="/admin/productos"
+                      element={<ProductAdminContainer />}
+                    />
+                    <Route
+                      path="/admin/noticias"
+                      element={<NewsAdminContainer />}
+                    />
+                  </>
+                )}
+
                 <Route path="/*" element={<NoFound />} />
               </Route>
             </Routes>

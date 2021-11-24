@@ -19,6 +19,7 @@ export default function NewsLast() {
 
   return (
     <>
+      {!news.length && <h3 align="center">No hay datos registrados</h3>}
       {news.map((news) => (
         <NewsCard key={news._id} news={news} />
       ))}

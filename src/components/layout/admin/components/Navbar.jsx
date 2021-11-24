@@ -255,7 +255,7 @@ const Navbar = () => {
                 src={me.image ? URL_IMAGE + me.image : logo}
                 alt="Header Avatar"
               />
-              <span class="d-none d-xl-inline-block ms-1">{me.first_name}</span>
+              <span class="d-none d-xl-inline-block ms-1">{user.user_name}</span>
               <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>
             <div

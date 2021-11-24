@@ -38,6 +38,9 @@ export default function ProductList() {
         />
       </div>
       <hr />
+      {!productsFilter.length && (
+        <h3 align="center">No hay datos registrados</h3>
+      )}
       {productsFilter.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}
