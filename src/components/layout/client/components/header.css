@@ -88,10 +88,11 @@ body{
     margin-right:6px;
 }
 .header .logo{
-    display:inline-block !important;
-    width:304px;
-    height:114px;
-    object-fit:contain;
+    /* display:inline-block !important; */
+    /* width:100px; */
+    height:50px;
+    /* object-fit:contain; */
+    margin-left: 70px;
     z-index:1;
     filter: drop-shadow(0 0 5px #fff) brightness(2) saturate(180%);
 }
@@ -150,7 +151,8 @@ body{
     flex-direction:column;
     width:580px;
     position:absolute;
-    left:130px;
+    /* left:130px; */
+    margin: 0 50px;
     top:120px;
     padding:40px 30px 30px 30px;
     color:#fff;

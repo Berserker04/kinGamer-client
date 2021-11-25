@@ -43,6 +43,7 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
+        
         <div className="fondo"></div>
         <div className="text">
           <div className="logo-and-title">

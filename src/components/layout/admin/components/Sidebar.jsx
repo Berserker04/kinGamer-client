@@ -50,10 +50,10 @@ const Sidebar = () => {
             {/* si es admin mostrar */}
             {user.role === 'Admin' && (
               <li>
-                <NavLink to="/admin/productos" className="waves-effect">
+                <a href="#/" className="waves-effect">
                   <i class="fas fa-cog"></i>
                   <span>Admin</span>
-                </NavLink>
+                </a>
                 <ul className="sub-menu" style={{ height: 0 }}>
                   <li
                     className={`${

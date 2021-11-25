@@ -20,18 +20,24 @@ export default function ProductDetail() {
   }, [getProduct])
 
   return (
-    <div className="row">
-      <div className="col-md-6">
-        <figure>
+    <>
+      <div className="col-sm-12 col-md-6">
+        <figure
+          className="d-flex justify-content-center"
+          style={{ backgroundColor: '#00000099', padding: 30 }}
+        >
           <img
-            className="col-md-12"
+            className="card-img-center img-fluid"
             src={URL_IMAGE + product.image}
             alt={product.image}
-            style={{ backgroundSize: 'cover' }}
+            style={{maxHeight:500}}
           />
         </figure>
       </div>
-      <div className="col-md-6" style={{backgroundColor:"#00000099"}}>
+      <div
+        className="col-sm-12 col-md-6"
+        style={{ backgroundColor: '#00000099', padding: 30 }}
+      >
         {/* <div className="col-12"> */}
         <h2>{product.name}</h2>
         {/* </div> */}
@@ -52,9 +58,7 @@ export default function ProductDetail() {
       </div>
       <hr />
       <h2 style={{ textAlign: 'center' }}>últimos productos</h2>
-      <div className="row">
-        <ProductLast />
-      </div>
-    </div>
+      <ProductLast />
+    </>
   )
 }

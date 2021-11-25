@@ -47,41 +47,47 @@ export default function NewsList({ btnAdd, changeState, setNewsEdit }) {
       ))} */}
       <div class="card">
         <div class="card-body">
-          <table
-            id="datatable"
-            class="table table-bordered dt-responsive nowrap"
-            // style="border-collapse: collapse; border-spacing: 0; width: 100%;"
-            style={{
-              borderCollapse: 'collapse',
-              borderSpacing: 0,
-              width: '100%',
-            }}
-          >
-            <thead>
-              <tr style={{ textAlign: 'center' }}>
-                <th>Titulo de la noticia</th>
-                <th>Imagen</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
+          <div class="table-rep-plugin">
+            <div class="table-responsive mb-0" data-pattern="priority-columns">
+              <table
+                id="datatable"
+                class="table table-bordered dt-responsive nowrap"
+                // style="border-collapse: collapse; border-spacing: 0; width: 100%;"
+                style={{
+                  borderCollapse: 'collapse',
+                  borderSpacing: 0,
+                  width: '100%',
+                }}
+              >
+                <thead>
+                  <tr style={{ textAlign: 'center' }}>
+                    <th>Titulo de la noticia</th>
+                    <th>Imagen</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
 
-            <tbody>
-              {!newsFilter.length && (
-                <tr>
-                  <td colSpan="4" align="center">No hay datos registrados</td>
-                </tr>
-              )}
-              {newsFilter.map((news) => (
-                <NewsCard
-                  key={news._id}
-                  news={news}
-                  changeState={changeState}
-                  setNewsEdit={setNewsEdit}
-                />
-              ))}
-            </tbody>
-          </table>
+                <tbody>
+                  {!newsFilter.length && (
+                    <tr>
+                      <td colSpan="4" align="center">
+                        No hay datos registrados
+                      </td>
+                    </tr>
+                  )}
+                  {newsFilter.map((news) => (
+                    <NewsCard
+                      key={news._id}
+                      news={news}
+                      changeState={changeState}
+                      setNewsEdit={setNewsEdit}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </>

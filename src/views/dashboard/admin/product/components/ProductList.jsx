@@ -50,44 +50,48 @@ export default function ProductList({ btnAdd, changeState, setProductEdit }) {
       ))} */}
       <div class="card">
         <div class="card-body">
-          <table
-            id="datatable"
-            class="table table-bordered dt-responsive nowrap"
-            // style="border-collapse: collapse; border-spacing: 0; width: 100%;"
-            style={{
-              borderCollapse: 'collapse',
-              borderSpacing: 0,
-              width: '100%',
-            }}
-          >
-            <thead>
-              <tr style={{ textAlign: 'center' }}>
-                <th>Nombre del producto</th>
-                <th>Imagen</th>
-                <th>URL de compra</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
+          <div class="table-rep-plugin">
+            <div class="table-responsive mb-0" data-pattern="priority-columns">
+              <table
+                id="datatable"
+                class="table table-striped dt-responsive nowrap"
+                // style="border-collapse: collapse; border-spacing: 0; width: 100%;"
+                style={{
+                  borderCollapse: 'collapse',
+                  borderSpacing: 0,
+                  width: '100%',
+                }}
+              >
+                <thead>
+                  <tr style={{ textAlign: 'center' }}>
+                    <th>Nombre del producto</th>
+                    <th>Imagen</th>
+                    <th>URL de compra</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
 
-            <tbody>
-              {!productsFilter.length && (
-                <tr>
-                  <td colSpan="5" align="center">
-                    No hay datos registrados
-                  </td>
-                </tr>
-              )}
-              {productsFilter.map((product) => (
-                <ProductCard
-                  key={product._id}
-                  product={product}
-                  changeState={changeState}
-                  setProductEdit={setProductEdit}
-                />
-              ))}
-            </tbody>
-          </table>
+                <tbody style={{ overflowX: 'scroll' }}>
+                  {!productsFilter.length && (
+                    <tr>
+                      <td colSpan="5" align="center">
+                        No hay datos registrados
+                      </td>
+                    </tr>
+                  )}
+                  {productsFilter.map((product) => (
+                    <ProductCard
+                      key={product._id}
+                      product={product}
+                      changeState={changeState}
+                      setProductEdit={setProductEdit}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </>

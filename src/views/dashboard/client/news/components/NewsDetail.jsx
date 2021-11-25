@@ -20,20 +20,22 @@ export default function NewsDetail() {
   }, [getNews])
 
   return (
-    <div className="row">
-      <div className="col-md-6">
-        <figure>
+    <>
+      <div className="col-sm-12 col-md-6">
+        <figure  className="d-flex justify-content-center"
+          style={{ backgroundColor: '#00000099', padding: 10}}>
           <img
-            className="col-md-12"
+            className="card-img-center img-fluid"
             src={URL_IMAGE + news.image}
             alt={news.image}
-            style={{ backgroundSize: 'cover' }}
+            style={{maxHeight:500}}
           />
         </figure>
       </div>
-      <div className="col-md-6">
+      <div  className="col-sm-12 col-md-6"
+        style={{ backgroundColor: '#00000099', padding: 30 }}>
         {/* <div className="col-12"> */}
-        <h2>{news.name}</h2>
+        <h2>{news.title}</h2>
         {/* </div> */}
         <p style={{ fontSize: 20 }}>{news.description}</p>
         {/* <button className="btn btn-success" style={{ marginRight: 5 }}>Ir a comprar</button> */}
@@ -43,9 +45,7 @@ export default function NewsDetail() {
       </div>
       <hr />
       <h2 style={{ textAlign: 'center' }}>últimas noticias</h2>
-      <div className="row">
-        <NewsLast />
-      </div>
-    </div>
+      <NewsLast />
+    </>
   )
 }

@@ -62,7 +62,7 @@ const Navbar = () => {
         </div>
 
         <div class="d-flex">
-          <div class="dropdown d-inline-block d-lg-none ms-2">
+          {/* <div class="dropdown d-inline-block d-lg-none ms-2">
             <button
               type="button"
               class="btn header-item noti-icon waves-effect"
@@ -94,7 +94,7 @@ const Navbar = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
 
           {/* <div class="dropdown d-none d-lg-inline-block ms-1">
             <button
