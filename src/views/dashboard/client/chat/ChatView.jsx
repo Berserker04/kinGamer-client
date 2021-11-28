@@ -26,6 +26,8 @@ export default function ChatView({
   setEmoji,
   addUser,
   setShowModal,
+  setShowModalChat,
+  filterChats,
 }) {
   const divRef = useRef(null)
 
@@ -47,33 +49,35 @@ export default function ChatView({
           <div className="p-3" style={{ backgroundColor: '#F5F5F5' }}>
             <div className="col-12 d-flex">
               <div className="col-6">
-                <img
+                {/* <img
                   src={me.image ? URL_IMAGE + me.image : defaultChat}
                   alt=""
                   height="50"
                   width="50"
                   className="rounded-circle"
-                />
+                /> */}
+                <button
+                  className="btn btn-secondary d-md-none"
+                  onClick={setShowModalChat}
+                  // style={{ marginLeft: 20 }}
+                >
+                  <i class="fas fa-comments"></i>
+                </button>
               </div>
-              <div className="col-6">
-                <div className="row">
-                  <div
-                    className="col-md-9"
-                    style={{ display: 'flex', justifyContent: 'flex-end' }}
-                  >
-                    <button className="btn btn-info" onClick={setShowModal}>
-                      <i class="fas fa-envelope"></i>
-                    </button>
-                  </div>
-                  <div
-                    className="col-md-3"
-                    style={{ display: 'flex', justifyContent: 'flex-end' }}
-                  >
-                    <button className="btn btn-primary" onClick={addUser}>
-                      <i class="fas fa-user-plus"></i>
-                    </button>
-                  </div>
-                </div>
+              <div
+                className="col-6"
+                style={{ display: 'flex', justifyContent: 'flex-end' }}
+              >
+                <button className="btn btn-info" onClick={setShowModal}>
+                  <i class="fas fa-envelope"></i>
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={addUser}
+                  style={{ marginLeft: 10 }}
+                >
+                  <i class="fas fa-user-plus"></i>
+                </button>
               </div>
               {/* <div className="col-6 d-flex justify-content-end">
                   <i
@@ -89,7 +93,8 @@ export default function ChatView({
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Search..."
+                    placeholder="Buscar usuario"
+                    onChange={({ target }) => filterChats(target.value)}
                   />
                   <span className="ri-search-line"></span>
                 </div>
@@ -97,6 +102,7 @@ export default function ChatView({
             </div>
           </div>
           <div
+            className="d-none d-md-block"
             style={{
               height: 'calc(100vh - 450px)',
               overflow: 'hidden !important',

@@ -8,6 +8,7 @@ import useChat from '../../../../hooks/useChat'
 import Swal from 'sweetalert2'
 import ChatRequestsList from './components/ChatRequestsList'
 import ModalView from '../../../../components/modal/ModalView'
+import ChatList from './components/ChatList'
 
 export default function ChatContainer(props) {
   const { user, me } = useSelector((state) => state.user)
@@ -22,6 +23,7 @@ export default function ChatContainer(props) {
 
   const [chatsPublic, setChatsPublic] = useState([])
   const [chatsPrivate, setChatsPrivate] = useState([])
+  const [chatsPrivateFilter, setChatsPrivateFilter] = useState([])
   //   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
   const [chatSelected, setChatSelected] = useState('')
@@ -29,6 +31,7 @@ export default function ChatContainer(props) {
 
   // Modal
   const [showModal, setShowModal] = useState(false)
+  const [showModalChat, setShowModalChat] = useState(false)
   const [chatRequests, setChatRequests] = useState([])
 
   const getChats = useCallback(async () => {
@@ -44,13 +47,14 @@ export default function ChatContainer(props) {
         async ({ data }) => {
           if (data.ok) {
             setChatsPrivate(data.body)
+            setChatsPrivateFilter(data.body)
           }
         },
       )
     } catch (error) {
       console.log(error)
     }
-  }, [setChatsPublic, setChatsPrivate, header, user])
+  }, [setChatsPublic, setChatsPrivate, setChatsPrivateFilter, header, user])
 
   const getChatRequest = useCallback(async () => {
     try {
@@ -178,6 +182,17 @@ export default function ChatContainer(props) {
     })
   }
 
+  const filterChats = async (value) => {
+    let result = chatsPrivate.filter((chat) => {
+      let currentUser = chat.users.find((u) => u._id !== user._id)
+      if (currentUser.user_name.toLowerCase().includes(value.toLowerCase()))
+        return true
+      else return false
+    })
+
+    setChatsPrivateFilter([...result])
+  }
+
   useEffect(() => {
     if (roomId) getMessages()
     else if (newUser) getMessages2()
@@ -194,7 +209,7 @@ export default function ChatContainer(props) {
         me={me}
         user={user}
         chatsPublic={chatsPublic}
-        chatsPrivate={chatsPrivate}
+        chatsPrivate={chatsPrivateFilter}
         chatSelected={chatSelected}
         roomId={currentRoomId}
         message={newMessage}
@@ -206,9 +221,14 @@ export default function ChatContainer(props) {
         emoji={emoji}
         setEmoji={setEmoji}
         addUser={addUser}
+        filterChats={filterChats}
         setShowModal={() => {
           getChatRequest()
           setShowModal(true)
+        }}
+        setShowModalChat={() => {
+          getChats()
+          setShowModalChat(true)
         }}
       />
       <ModalView
@@ -221,6 +241,64 @@ export default function ChatContainer(props) {
           declineChatRequest={declineChatRequest}
           aceptChatRequest={aceptChatRequest}
         />
+      </ModalView>
+      <ModalView
+        show={showModalChat}
+        title="Lista de chats"
+        onHide={() => setShowModalChat(false)}
+      >
+        <div className="col-12">
+          <form className="app-search">
+            <div className="position-relative">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Buscar usuario"
+                onChange={({ target }) => filterChats(target.value)}
+              />
+              <span className="ri-search-line"></span>
+            </div>
+          </form>
+        </div>
+        <div
+          style={{
+            height: 'calc(100vh - 450px)',
+            overflow: 'hidden !important',
+            overflowY: 'scroll',
+          }}
+        >
+          <h2 style={{ marginLeft: 10, color: '#22D3EE' }}>Chat público</h2>
+          {/* <!-- CARD USER --> */}
+          {!chatsPublic.length && (
+            <p style={{ marginLeft: 15 }}>No hay chat público disponible</p>
+          )}
+
+          {chatsPublic.map((chat) => (
+            <ChatList
+              key={chat._id}
+              chat={chat}
+              roomId={roomId}
+              setUserSelected={setUserSelected}
+              user={user}
+            />
+          ))}
+
+          <h2 style={{ marginLeft: 10, color: '#22D3EE' }}>Chats privados</h2>
+          {!chatsPrivateFilter.length && (
+            <p style={{ marginLeft: 15 }}>
+              No hay chats privados, agrega personas
+            </p>
+          )}
+          {chatsPrivateFilter.map((chat) => (
+            <ChatList
+              key={chat._id}
+              chat={chat}
+              roomId={roomId}
+              setUserSelected={setUserSelected}
+              user={user}
+            />
+          ))}
+        </div>
       </ModalView>
     </div>
   )
