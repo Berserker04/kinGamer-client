@@ -181,10 +181,11 @@ export default function ProfileView({
                           placeholder="Contraseña"
                           name="oldPassword"
                           onChange={formik.handleChange}
-                          value={form.oldPassword}
+                          value={formik.values.oldPassword}
                           // required
                         />
-                        {formik.touched.oldPassword && formik.errors.oldPassword ? (
+                        {formik.touched.oldPassword &&
+                        formik.errors.oldPassword ? (
                           <div style={{ color: 'pink' }}>
                             {formik.errors.oldPassword}
                           </div>
@@ -201,7 +202,7 @@ export default function ProfileView({
                           placeholder="Contraseña"
                           name="password"
                           onChange={formik.handleChange}
-                          value={form.password}
+                          value={formik.values.password}
                           // required
                         />
                         {formik.touched.password && formik.errors.password ? (

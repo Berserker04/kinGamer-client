@@ -4,6 +4,7 @@ import './styles.css'
 
 import CheckAuth from '../auth/CheckAuth'
 import LoginContainer from '../auth/LoginContainer'
+import LogiRecoveryView from '../auth/LoginRecoveryView'
 import RegisterContainer from '../auth/RegisterContainer'
 import NoFound from '../shared/noFound'
 import LayoutAdmin from '../../components/layout/admin/Layout'
@@ -27,6 +28,7 @@ import NewsAdminContainer from '../dashboard/admin/news/NewsContainer'
 import HomeClientContainer from '../client/home/HomeClientContainer'
 import NewsClienntContainer from '../client/news/NewsClientContainer'
 import ProductClienntContainer from '../client/product/productClientContainer'
+import LogiNewPasswordView from '../auth/LoginNewPasswordView'
 
 // Dashboar
 
@@ -72,6 +74,8 @@ const App = () => {
         <Routes>
           <Route path="/registrar" element={<RegisterContainer />} />
           <Route path="/login" element={<LoginContainer />} />
+          <Route path="/recuperar/password" element={<LogiRecoveryView />} />
+          <Route path="/recuperar/password/:tokenRecoveryPassword" element={<LogiNewPasswordView />} />
           <Route path="/" element={<LayoutClient />}>
             <Route index element={<HomeClientContainer />} />
             <Route path="/noticias" element={<NewsClienntContainer />} />

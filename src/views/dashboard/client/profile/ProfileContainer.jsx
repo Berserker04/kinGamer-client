@@ -18,6 +18,13 @@ export default function ProfileContainer() {
 
   const [form, setForm] = useState({ ...me, ...user })
 
+  const initialValuesFormik = {
+    user_name: user.user_name,
+    password: '',
+    oldPassword: '',
+  }
+  // const [formFormik, setFormFormik] = useState(initialValuesFormik)
+
   const onChange = (e) => {
     setBtnSend(false)
     setForm({
@@ -89,6 +96,7 @@ export default function ProfileContainer() {
           showConfirmButton: false,
           timer: 2000,
         })
+        // setFormFormik(initialValuesFormik)
       } else {
         Swal.fire({
           position: 'top-end',
@@ -108,11 +116,7 @@ export default function ProfileContainer() {
   }
 
   const formik = useFormik({
-    initialValues: {
-      user_name: user.user_name,
-      password: '',
-      oldPassword: '',
-    },
+    initialValues: initialValuesFormik,
     validationSchema: Yup.object({
       oldPassword: Yup.string()
         .max(15, 'Debe tener 15 caracteres o menos')
@@ -123,8 +127,9 @@ export default function ProfileContainer() {
         .min(8, 'Debe tener 8 caracteres minimo')
         .required('Ingresa una contraseña valida'),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       handleUpdatePassword(values)
+      resetForm(initialValuesFormik)
     },
   })
 
