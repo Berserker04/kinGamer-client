@@ -5,6 +5,7 @@ import ChatView from './ChatView'
 import socketIOClient from 'socket.io-client'
 import { useLocation, useParams } from 'react-router'
 import useChat from '../../../hooks/useChat'
+import ModalView from '../../../../components/modal/ModalView'
 
 export default function ChatContainer(props) {
   const { user } = useSelector((state) => state.user)

@@ -1,5 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { URL_IMAGE } from '../../../../../api'
 import logo from '../../../../../assets/images/logos/logo.png'
+import defaultChat from '../../../../../assets/images/img/defaultChat.jpg'
 
 export default function MessageList({
   message,
@@ -7,7 +10,8 @@ export default function MessageList({
   color = 'white',
   bg,
   icon,
-  user
+  witchIcon,
+  setUserSelected,
 }) {
   return (
     <div
@@ -18,31 +22,41 @@ export default function MessageList({
         alignItems: 'flex-end',
       }}
     >
-      {icon ? (
-        <div
-          className="rounded-circle"
-          style={{
-            backgroundColor: 'white',
-            padding: 4,
-            marginRight: 5,
-            width: 55,
-            height: 55,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <img
-            src={logo}
-            alt=""
-            height="50"
-            width="50"
+      {witchIcon &&
+        (icon ? (
+          <div
             className="rounded-circle"
-          />
-        </div>
-      ) : (
-        <div style={{ width: 55, marginRight: 5 }}></div>
-      )}
+            style={{
+              backgroundColor: 'white',
+              padding: 4,
+              marginRight: 5,
+              width: 55,
+              height: 55,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <NavLink
+              onClick={() => setUserSelected(message?.user)}
+              to={`/chat/u/${message?.user?._id}`}
+            >
+              <img
+                src={`${
+                  message?.user?.person_id?.image
+                    ? URL_IMAGE + message?.user?.person_id?.image
+                    : defaultChat
+                }`}
+                alt=""
+                height="50"
+                width="50"
+                className="rounded-circle"
+              />
+            </NavLink>
+          </div>
+        ) : (
+          <div style={{ width: 55, marginRight: 5 }}></div>
+        ))}
 
       <span
         style={{
@@ -61,7 +75,7 @@ export default function MessageList({
         {message.message}
         <br />
         <span style={{ color: '#22D3EE', fontWeight: 'bold' }}>
-          {icon ? message.user.user_name : ''}
+          {icon ? message?.user?.user_name : ''}
         </span>
       </span>
     </div>

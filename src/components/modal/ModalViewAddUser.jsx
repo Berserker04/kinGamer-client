@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button } from "react-bootstrap";
 
-const ModalView = ({
+const ModalViewAddUser = ({
   title,
   show,
   onHide,
   btnSuccess,
   btnCanceTitle,
   btnSuccessTitle,
-  children,
+  children
 }) => (
   <Modal
     size="lg"
@@ -18,20 +18,18 @@ const ModalView = ({
     aria-labelledby="example-modal-sizes-title-lg"
   >
     <Modal.Header closeButton>
-      <Modal.Title id="example-modal-sizes-title-lg">{title || ''}</Modal.Title>
+      <Modal.Title id="example-modal-sizes-title-lg">{title || ""}</Modal.Title>
     </Modal.Header>
     <Modal.Body>{children}</Modal.Body>
     <Modal.Footer>
       <Button className="btn btn-danger" onClick={() => onHide()}>
-        {btnCanceTitle || 'Cancelar'}
+        {btnCanceTitle || "Cancelar"}
       </Button>
-      {btnSuccess && (
-        <Button className="btn btn-success" onClick={() => btnSuccess()}>
-          {btnSuccessTitle || 'Envíar'}
-        </Button>
-      )}
+      {/* <Button className="btn btn-success" onClick={() => btnSuccess()}>
+        {btnSuccessTitle || "Envíar"}
+      </Button> */}
     </Modal.Footer>
   </Modal>
-)
+);
 
-export default ModalView
+export default ModalViewAddUser;

@@ -6,6 +6,7 @@ import ChatList from './components/ChatList'
 import MessageList from './components/MessageList'
 
 import './styles.css'
+import ModalView from '../../../../components/modal/ModalView'
 
 export default function ChatView({
   user,
@@ -268,6 +269,8 @@ export default function ChatView({
           </div>
         </div>
       </div>
+
+      
     </div>
   )
 }

@@ -43,6 +43,7 @@ const App = () => {
                 <Route index element={<HomeContainer />} />
                 <Route path="/chat" element={<ChatContainer />} />
                 <Route path="/chat/:roomId" element={<ChatContainer />} />
+                <Route path="/chat/u/:newUser" element={<ChatContainer />} />
                 <Route path="/productos" element={<ProductContainer />} />
                 <Route path="/productos/:slug" element={<ProductDetail />} />
                 <Route path="/noticias" element={<NewsContainerAdmin />} />

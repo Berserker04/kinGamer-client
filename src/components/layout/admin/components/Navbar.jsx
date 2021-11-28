@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import { URL_IMAGE } from '../../../../api'
 import logo from '../../../../assets/images/logos/logo.png'
+import defaultChat from '../../../../assets/images/img/defaultChat.jpg'
 
 const Navbar = () => {
   const { me, user } = useSelector((state) => state.user)
@@ -252,10 +253,12 @@ const Navbar = () => {
             >
               <img
                 class="rounded-circle header-profile-user"
-                src={me.image ? URL_IMAGE + me.image : logo}
+                src={me.image ? URL_IMAGE + me.image : defaultChat}
                 alt="Header Avatar"
               />
-              <span class="d-none d-xl-inline-block ms-1">{user.user_name}</span>
+              <span class="d-none d-xl-inline-block ms-1">
+                {user.user_name}
+              </span>
               <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>
             <div
