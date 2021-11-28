@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { API } from '../../../../../api'
 import {
   listProducts,
   ProductsFilter,
@@ -8,8 +7,6 @@ import {
 import ProductCard from './ProductCard'
 
 export default function ProductList({ btnAdd, changeState, setProductEdit }) {
-  // const [products, setProducts] = useState([])
-  // const [productsFilter, setProductsFilter] = useState([])
   const { header } = useSelector((state) => state.auth)
   const { products, productsFilter } = useSelector((state) => state.product)
 
@@ -45,9 +42,6 @@ export default function ProductList({ btnAdd, changeState, setProductEdit }) {
       {btnAdd}
 
       <hr />
-      {/* {productsFilter.map((product) => (
-        <ProductCard key={product._id} product={product} />
-      ))} */}
       <div class="card">
         <div class="card-body">
           <div class="table-rep-plugin">

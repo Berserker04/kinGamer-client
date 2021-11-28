@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import logo from '../../assets/images/logos/logo.png'
-// import Logo from "../../assets/img/logos/MedicalApp.png";
 import './styles/styles.css'
 import { Spinner } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 import { API } from '../../api'
 
-const LogiNewPasswordView = ({}) => {
+const LogiNewPasswordView = () => {
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(false)
   const [loadingValidate, setLoadingValidate] = useState(true)
@@ -76,7 +75,7 @@ const LogiNewPasswordView = ({}) => {
       }
     })
     setLoadingValidate(false)
-  }, [])
+  }, [setLoadingValidate, setTokenValid, setUser, tokenRecoveryPassword])
 
   useEffect(() => {
     getUser()

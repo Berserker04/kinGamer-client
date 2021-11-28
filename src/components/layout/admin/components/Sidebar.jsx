@@ -5,14 +5,8 @@ import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 const Sidebar = () => {
-  const hiddenLateralNav = () => {
-    document.getElementById('sidenav-main').classList.toggle('bg-white')
-    document.getElementById('body-id').classList.toggle('g-sidenav-pinned')
-  }
+  const { user } = useSelector((state) => state.user)
 
-  const { user, me } = useSelector((state) => state.user)
-
-  // const { user } = useSelector((state) => state.user);
   const { pathname } = useLocation()
   return (
     <div class="vertical-menu">

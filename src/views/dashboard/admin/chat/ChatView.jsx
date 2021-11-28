@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Picker from 'emoji-picker-react'
 import mundoGamer from '../../../assets/images/logos/mundoGamer.jpg'
 import logo from '../../../assets/images/logos/logo.png'
@@ -6,7 +6,6 @@ import ChatList from './components/ChatList'
 import MessageList from './components/MessageList'
 
 import './styles.css'
-import ModalView from '../../../../components/modal/ModalView'
 
 export default function ChatView({
   user,
@@ -141,7 +140,7 @@ export default function ChatView({
                     borderRadius: '20px',
                   }}
                 >
-                  <img src={logo} height={200} />
+                  <img src={logo} height={200} alt="" />
                   <h2>Chat Gamer</h2>
                   <p style={{ fontSize: 16 }}>
                     ¡Seleccione un usuario para iniciar una conversación! ...{' '}
@@ -232,7 +231,7 @@ export default function ChatView({
                           <div className="input-group">
                             <div
                               className="input-group-text btn-emoji"
-                                onClick={() => setEmoji(!emoji)}
+                              onClick={() => setEmoji(!emoji)}
                             >
                               😃
                             </div>
@@ -249,7 +248,7 @@ export default function ChatView({
                           </div>
                         </div>
                         {message && (
-                          <div className="col-md-2 d-flex align-items-end" >
+                          <div className="col-md-2 d-flex align-items-end">
                             <button
                               type="button"
                               class="btn btn-info waves-effect waves-light"
@@ -269,8 +268,6 @@ export default function ChatView({
           </div>
         </div>
       </div>
-
-      
     </div>
   )
 }

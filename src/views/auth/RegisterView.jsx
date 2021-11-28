@@ -123,7 +123,7 @@ const RegisterView = ({ onChange, register, form, formik, loading }) => (
                           for="term-conditionCheck"
                         >
                           Yo acepto *{' '}
-                          <a href="#" class="text-primary">
+                          <a href="#/" class="text-primary">
                             Los Terminos y Condiciones
                           </a>
                         </label>
@@ -132,7 +132,6 @@ const RegisterView = ({ onChange, register, form, formik, loading }) => (
                         <button
                           class="btn btn-primary waves-effect waves-light"
                           type="submit"
-                          // onClick={() => register()}
                           disabled={
                             form.acceptTerms !== 'true' || loading
                               ? true

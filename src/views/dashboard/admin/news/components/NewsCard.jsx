@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { URL_IMAGE } from '../../../../../api'
 
 export default function NewsCard({ news, changeState, setNewsEdit }) {

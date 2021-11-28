@@ -56,7 +56,7 @@ export default function NewsContainer() {
 
   async function sendForm() {
     setLoading(true)
-    console.log(form);
+    console.log(form)
     await API.POST(`/news`, form).then(({ data }) => {
       if (data.ok) {
         Swal.fire({
@@ -130,11 +130,12 @@ export default function NewsContainer() {
       showModal={showModal}
       setShowModal={setNewsAdd}
       form={form}
-      titleForm={isAdd ? "Agregar noticia" : "Actualizar noticia"}
+      titleForm={isAdd ? 'Agregar noticia' : 'Actualizar noticia'}
       sendForm={isAdd ? sendForm : sendFormEdit}
       onChange={onChange}
       changeState={changeState}
       setNewsEdit={setNewsEdit}
+      loading={loading}
     />
   )
 }

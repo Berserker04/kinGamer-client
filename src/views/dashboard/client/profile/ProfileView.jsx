@@ -7,7 +7,7 @@ export default function ProfileView({
   formChange,
   onChange,
   handleUpdate,
-  handleUpdatePassword,
+  loading,
   btnSend,
   formik,
 }) {
@@ -216,7 +216,7 @@ export default function ProfileView({
                           class="btn btn-primary waves-effect waves-light"
                           type="submit"
                           // onClick={() => handleUpdatePassword()}
-                          // disabled={btnSend}
+                          disabled={loading}
                         >
                           Actualizar
                         </button>

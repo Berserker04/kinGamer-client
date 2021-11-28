@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { API } from '../../../../api'
 import { refreshHeader } from '../../../../redux/actions/auth'
@@ -144,8 +143,8 @@ export default function ProfileContainer() {
         btnSend={btnSend}
         onChange={onChange}
         handleUpdate={handleUpdate}
-        handleUpdatePassword={handleUpdatePassword}
         formik={formik}
+        loading={loading}
       />
     </div>
   )

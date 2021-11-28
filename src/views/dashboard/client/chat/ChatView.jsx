@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Picker from 'emoji-picker-react'
 import mundoGamer from '../../../../assets/images/logos/mundoGamer.jpg'
 import logo from '../../../../assets/images/logos/logo.png'
@@ -79,15 +79,8 @@ export default function ChatView({
                   <i class="fas fa-user-plus"></i>
                 </button>
               </div>
-              {/* <div className="col-6 d-flex justify-content-end">
-                  <i
-                    className="mdi mdi-dots-vertical"
-                    style={{ fontSize: 30 }}
-                  ></i>
-                </div> */}
             </div>
             <div className="col-12 my-2">
-              {/* <input type="text" className="form-control" /> */}
               <form className="app-search d-none d-lg-block">
                 <div className="position-relative">
                   <input
@@ -173,7 +166,7 @@ export default function ChatView({
                   borderRadius: '20px',
                 }}
               >
-                <img src={logo} height={200} />
+                <img src={logo} height={200} alt="" />
                 <h2>Chat Gamer</h2>
                 <p style={{ fontSize: 16 }}>
                   ¡Seleccione un usuario para iniciar una conversación! ...{' '}

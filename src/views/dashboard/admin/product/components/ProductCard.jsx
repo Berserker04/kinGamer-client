@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { URL_IMAGE } from '../../../../../api'
 
 export default function ProductCard({ product, changeState, setProductEdit }) {

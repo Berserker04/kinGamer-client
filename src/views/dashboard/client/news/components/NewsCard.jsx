@@ -28,22 +28,3 @@ export default function ProductCard({ news }) {
     </div>
   )
 }
-{
-  /* <div class="col-md-6 col-xl-3">
-  <div class="card">
-    <Link to={`/news/${news.slug}`}>
-      <img
-        className="card-img-top img-fluid"
-        src={URL_IMAGE + news.image}
-        style={{ height: 350 }}
-        alt={news.image}
-      />
-    </Link>
-    <div class="card-body">
-      <h4 class="card-title ">{news.name}</h4>
-      <p class="card-text">{news.description}</p>
-      <Link to={`/noticias/${news.slug}`}>Leer más</Link>
-    </div>
-  </div>
-</div> */
-}

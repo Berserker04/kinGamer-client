@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { API, URL_SERVER } from '../../../../api'
 import ChatView from './ChatView'
 import socketIOClient from 'socket.io-client'
-import { useLocation, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import useChat from '../../../../hooks/useChat'
 import Swal from 'sweetalert2'
 import ChatRequestsList from './components/ChatRequestsList'
@@ -91,7 +91,7 @@ export default function ChatContainer(props) {
         }
       }
     })
-  }, [currentRoomId, newUser, setChatSelected, setCurrentRoomId])
+  }, [header, user, newUser, setChatSelected, setCurrentRoomId])
 
   const handleSendMessage = async () => {
     const data = {
@@ -110,13 +110,12 @@ export default function ChatContainer(props) {
     socket.on('chat message', (data) => {
       if (chatSelected._id === data.chat && user._id !== data.user._id) {
         messages.push(data)
-        // setMessages([...messages])
       }
     })
     socket.on(user._id, (data) => {
       getChats()
     })
-  }, [user, chatSelected, getChats])
+  }, [user, chatSelected, getChats, messages])
 
   const addUser = () => {
     Swal.fire({
@@ -201,7 +200,15 @@ export default function ChatContainer(props) {
     startSocket()
     getChats()
     getChatRequest()
-  }, [getChats, startSocket, getMessages, getMessages2, roomId, getChatRequest])
+  }, [
+    getChats,
+    startSocket,
+    getMessages,
+    getMessages2,
+    roomId,
+    getChatRequest,
+    newUser,
+  ])
 
   return (
     <div>

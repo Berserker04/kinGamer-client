@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { URL_IMAGE } from '../../../../../api'
-import logo from '../../../../../assets/images/logos/logo.png'
 import defaultChat from '../../../../../assets/images/img/defaultChat.jpg'
 
 export default function MessageList({

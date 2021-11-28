@@ -79,7 +79,6 @@ export default function ProductContainer() {
         })
       }
     })
-    // setBtnSend(true)
     setLoading(false)
   }
 
@@ -109,7 +108,6 @@ export default function ProductContainer() {
         })
       }
     })
-    // setBtnSend(true)
     setLoading(false)
   }
 
@@ -135,6 +133,7 @@ export default function ProductContainer() {
       onChange={onChange}
       changeState={changeState}
       setProductEdit={setProductEdit}
+      loading={loading}
     />
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import mundoGamer from '../../../../../assets/images/logos/mundoGamer.jpg'
 import defaultChat from '../../../../../assets/images/img/defaultChat.jpg'
 import '../styles.css'
@@ -6,20 +6,20 @@ import { NavLink } from 'react-router-dom'
 import { URL_IMAGE } from '../../../../../api'
 
 export default function ChatList({ chat, setUserSelected, user, roomId }) {
-  let name = {
+  const [name, setName] = useState({
     user_name: 'Chat Público',
     person_id: {
       image: null,
     },
-  }
+  })
 
-  if (chat.users.length) name = chat.users.find((u) => u._id !== user._id)
+  if (chat.users.length) setName(chat.users.find((u) => u._id !== user._id))
 
   useEffect(() => {
     if (roomId === chat._id) {
       setUserSelected(name)
     }
-  }, [setUserSelected])
+  }, [roomId, chat, name, setUserSelected])
 
   return (
     <NavLink

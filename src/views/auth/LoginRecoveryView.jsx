@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import logo from '../../assets/images/logos/logo.png'
 import './styles/styles.css'
-import { Button, Spinner } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 import { API } from '../../api'
 
-const LogiRecoveryView = ({}) => {
+const LogiRecoveryView = () => {
   const [loading, setLoading] = useState(false)
   const [redirect, setRedirect] = useState(false)
   const [form, setForm] = useState({

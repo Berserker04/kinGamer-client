@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { API, URL_SERVER } from '../../../api'
 import ChatView from './ChatView'
 import socketIOClient from 'socket.io-client'
-import { useLocation, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import useChat from '../../../hooks/useChat'
-import ModalView from '../../../../components/modal/ModalView'
 
-export default function ChatContainer(props) {
+export default function ChatContainer() {
   const { user } = useSelector((state) => state.user)
   const { header } = useSelector((state) => state.auth)
 
@@ -22,8 +21,6 @@ export default function ChatContainer(props) {
   const [newMessage, setNewMessage] = useState('')
   const [chatSelected, setChatSelected] = useState('')
   const [userSelected, setUserSelected] = useState({})
-
-  const dispatch = useDispatch()
 
   const getChats = useCallback(async () => {
     try {
@@ -66,10 +63,9 @@ export default function ChatContainer(props) {
     socket.on('chat message', (data) => {
       if (chatSelected._id === data.chat && user._id !== data.user._id) {
         messages.push(data)
-        // setMessages([...messages])
       }
     })
-  }, [user, chatSelected])
+  }, [user, chatSelected, messages])
 
   useEffect(() => {
     if (roomId) getMessages()

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { URL_IMAGE } from '../../../../../api'
-import imgDefault from '../../../../../assets/images/img/defaultChat.jpg'
 import imgUpLoad from '../../../../../assets/images/logos/imgUpLoad.jpg'
 
 export default function ProductForm({ form, onChange }) {

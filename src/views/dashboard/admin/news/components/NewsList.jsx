@@ -1,12 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { API } from '../../../../../api'
 import { listNews, NewsFilter } from '../../../../../redux/actions/news'
 import NewsCard from './NewsCard'
 
 export default function NewsList({ btnAdd, changeState, setNewsEdit }) {
-  // const [news, setNews] = useState([])
-  // const [newsFilter, setNewsFilter] = useState([])
   const { header } = useSelector((state) => state.auth)
   const { news, newsFilter } = useSelector((state) => state.news)
 
@@ -42,9 +39,6 @@ export default function NewsList({ btnAdd, changeState, setNewsEdit }) {
       {btnAdd}
 
       <hr />
-      {/* {newsFilter.map((news) => (
-        <NewsCard key={news._id} news={news} />
-      ))} */}
       <div class="card">
         <div class="card-body">
           <div class="table-rep-plugin">

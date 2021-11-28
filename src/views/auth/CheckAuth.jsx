@@ -3,8 +3,6 @@ import { API } from '../../api'
 import { useDispatch } from 'react-redux'
 import { refreshHeader } from '../../redux/actions/auth'
 import { Me, User } from '../../redux/actions/users'
-import { Navigate } from 'react-router-dom'
-// import LoginContainer from './LoginContainer'
 import Logo from '../../assets/images/logos/logo.png'
 
 export default function CheckAuth({ children }) {
