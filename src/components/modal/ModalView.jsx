@@ -26,7 +26,7 @@ const ModalView = ({
         {btnCanceTitle || 'Cancelar'}
       </Button>
       {btnSuccess && (
-        <Button className="btn btn-success" onClick={() => btnSuccess()}>
+        <Button className="btn btn-success" onClick={()=>btnSuccess()}>
           {btnSuccessTitle || 'Envíar'}
         </Button>
       )}

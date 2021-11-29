@@ -43,7 +43,10 @@ export default function ProductForm({ form, onChange }) {
   return (
     <div className="card-body">
       <div className="d-flex justify-content-center">
-        <button onClick={selectImg} style={{backgroundColor:"transparent", border:"none"}}>
+        <button
+          onClick={selectImg}
+          style={{ backgroundColor: 'transparent', border: 'none' }}
+        >
           <img
             src={`${
               newImage

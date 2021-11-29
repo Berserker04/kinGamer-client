@@ -85,7 +85,7 @@ export default function ProductContainer() {
   const sendFormEdit = async () => {
     setLoading(true)
 
-    if (!form.image.includes('data:image/png;base64')) delete form.image
+    if (!form.image.includes('data:image/')) delete form.image
     await API.PUT(`/product/${form._id}`, form).then(({ data }) => {
       if (data.ok) {
         Swal.fire({

@@ -34,7 +34,7 @@ export default function ProductView({
         show={showModal}
         title={titleForm}
         onHide={setShowModal}
-        btnSuccess={() => sendForm()}
+        btnSuccess={sendForm}
         btnSuccessTitle="Guardar"
       >
         <ProductForm form={form} onChange={onChange} />
