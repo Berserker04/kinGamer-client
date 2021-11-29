@@ -18,7 +18,7 @@ export default function NewsList({ btnAdd, changeState, setNewsEdit }) {
 
   const handleFiler = ({ target }) => {
     const filter = news.filter((p) =>
-      p.name.toLowerCase().includes(target.value.toLowerCase()),
+      p.title.toLowerCase().includes(target.value.toLowerCase()),
     )
     dispatch(NewsFilter(filter))
   }
