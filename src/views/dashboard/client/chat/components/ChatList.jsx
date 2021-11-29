@@ -27,42 +27,29 @@ export default function ChatList({ chat, setUserSelected, user, roomId }) {
       onClick={() => setUserSelected(name)}
       to={`/chat/${chat._id}`}
     >
-      <div className="col-2">
-        <img
-          src={
-            name.user_name === 'Chat Público'
-              ? mundoGamer
-              : name.person_id.image
-              ? URL_IMAGE + name.person_id.image
-              : defaultChat
-          }
-          alt=""
-          height="50"
-          width="50"
-          className="rounded-circle"
-        />
-      </div>
-      <div
-        className="
-                col-7
-                d-flex
-                flex-column
-                justify-content-center
-              "
-      >
-        <strong>{name.user_name}</strong>
-        <p>Nuevo mensaje</p>
-      </div>
-      <div
-        className="
-                col-3
-                d-flex
-                flex-column
-                justify-content-center
-                align-items-end
-              "
-      >
-        {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
+      <div className="row">
+        <div className="col-4">
+          <img
+            src={
+              name.user_name === 'Chat Público'
+                ? mundoGamer
+                : name.person_id.image
+                ? URL_IMAGE + name.person_id.image
+                : defaultChat
+            }
+            alt=""
+            height="50"
+            width="50"
+            className="rounded-circle"
+          />
+        </div>
+        <div className="col-4">
+          <strong>{name.user_name}</strong>
+          {/* <p>Nuevo mensaje</p> */}
+        </div>
+        <div className="col-4">
+          {/* <span class="badge rounded-pill bg-primary float-end">3</span> */}
+        </div>
       </div>
     </NavLink>
   )
