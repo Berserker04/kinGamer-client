@@ -6,7 +6,7 @@ export default function NewsLast() {
   const [news, setNews] = useState([])
 
   const getNews = useCallback(() => {
-    API.GET('/news?limit=5').then(({ data }) => {
+    API.GET('/news?limit=5&state=true').then(({ data }) => {
       if (data.ok) {
         setNews(data.body)
       }

@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../../../assets/images/logos/logo.png'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './header.css'
 export const Header = () => {
   const toggleMenu = () => {
@@ -13,7 +13,7 @@ export const Header = () => {
         <div className="fondo">
           <div className="d-none d-lg-block">
             <nav className="nav">
-              <NavLink to="/" className="logo-slogan">
+              <Link to="/" className="logo-slogan">
                 <img src={logo} alt="" className="logo" />
                 <div className="letters">
                   <span>K</span>
@@ -25,7 +25,7 @@ export const Header = () => {
                   <span>e</span>
                   <span>r</span>
                 </div>
-              </NavLink>
+              </Link>
               <ul className="nav__menu">
                 <li>
                   <NavLink activeclassname="active" end to="/">

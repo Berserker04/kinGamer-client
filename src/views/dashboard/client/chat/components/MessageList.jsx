@@ -74,9 +74,11 @@ export default function MessageList({
       >
         {message.message}
         <br />
-        <span style={{ color: '#22D3EE', fontWeight: 'bold' }}>
-          {icon ? message?.user?.user_name : ''}
-        </span>
+        {witchIcon && (
+          <span style={{ color: '#22D3EE', fontWeight: 'bold' }}>
+            {icon ? message?.user?.user_name : ''}
+          </span>
+        )}
       </span>
     </div>
   )

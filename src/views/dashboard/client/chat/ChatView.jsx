@@ -88,7 +88,7 @@ export default function ChatView({
             </div>
             <div className="col-12 my-2">
               {/* <input type="text" className="form-control" /> */}
-              <form className="app-search d-none d-lg-block">
+              <form className="app-search d-none d-md-block">
                 <div className="position-relative">
                   <input
                     type="text"
